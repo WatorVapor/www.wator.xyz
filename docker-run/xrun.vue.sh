@@ -7,4 +7,5 @@ docker run -it \
   -v /watorvapor/workspace/www.wator.xyz/vue/home:/home/$USER \
   -u $(id -u $USER):$(id -g $USER) \
   --workdir="/opt/vue" \
+  --net=host \
   node:lts /bin/bash
