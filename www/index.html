@@ -6,111 +6,26 @@
     <meta name="viewport" content="width=device-width,initial-scale=0.35, maximum-scale=0.35,minimum-scale=0.35">
     <meta name="csrf-token" content="6vscVaCzJlBzz1lJBHJMbNoWt9H1gTcY9DK49Ap4"> 
     <title>Wator</title>
-    <!-- Fonts -->
-<link href="//fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css" integrity="sha256-NkXMfPcpoih3/xWDcrJcAX78pHpfwxkhNj0bAf8AMTs=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
-<style type="text/css">
-  .popover {
-    max-width: 400px !important;
-  }
-</style>
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/css/bootstrap.min.css" integrity="sha256-VoFZSlmyTXsegReQCNmbXrS4hBBUl/cexZvPmPWoJsY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css" integrity="sha256-0n6YDYIexWJmHyTKtRRHTXvoanQrXpFfpsfv0h53qvk=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/asset/css/top.css">
   </head>
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/8.0.12/jsrsasign-all-min.js" integrity="sha256-EI1piDYqyKFAy+ykWQZRjH5kkw9eIYE/IahQWg1rXt0=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.3/vue.min.js" integrity="sha256-OkepyislN9NacVaAUdPnl6D4CA8zwYQ7mEDpVB3wxXw=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/js/bootstrap.min.js" integrity="sha256-0IiaoZCI++9oAAvmCb5Y0r93XkuhvJpRalZLffQXLok=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+    <script src="/asset/js/ga.js" type="text/javascript"></script>
+    <script src="/asset/js/lang.js" type="text/javascript"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/base64-js@1.3.0/base64js.min.js" 
-  integrity="sha256-6Nq3ERANZFF5/7q3A7vSDHKttstfHieUf5+eFo9W4I0="
-  crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/base-58@0.0.1/Base58.min.js"></script>
-<script src="/wator/js/ga.js" type="text/javascript"></script>
-<script src="/wator/js/lang.js" type="text/javascript"></script>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <ul class="navbar-nav nav justify-content-start">
-  <li class="nav-item active">
-    <a class="btn btn-lg btn-primary nav-btn" href="/" role="button">
-      <i class="material-icons md-48">home</i>
-    </a>
-  </li>
-  <li class="nav-item active ml-lg-4">
-    <a class="btn btn-lg btn-primary nav-btn" href="/about" role="button">
-      <i class="material-icons md-48">copyright</i>
-    </a>
-  </li>
-<!--
-  <li class="nav-item active ml-lg-4">
-    <a class="btn btn-lg btn-primary nav-btn" href="/ethereum" role="button">
-      <img src="/wator/images/ethereum/ethereum_icon.png" />
-    </a>
-  </li>
--->
-</ul>
-          <!--
-<ul class="navbar-nav justify-content-center">
-  <li class="nav-item active">
-    <a class="btn btn-lg btn-primary nav-btn" href="/" role="button">
-      <i class="material-icons md-48">help</i>
-    </a>
-  </li>
-  <li class="nav-item active ml-lg-3">
-    <a class="btn btn-lg btn-primary nav-btn" href="/about" role="button">
-      <i class="material-icons md-48">settings</i>
-    </a>
-  </li>
-</ul>
--->
-        <ul class="navbar-nav nav justify-content-end">
-  <li class="nav-item active mr-lg-5">
-  zh
-  </li>
-  <li class="nav-item active mr-lg-5">
-    <a tabindex="1" href="#" class="btn btn-lg btn-success nav-btn" data-container="body" data-html="true" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="&lt;div class=&quot;row justify-content-around mt-lg-3 ml-lg-4 mr-lg-4&quot;&gt;&lt;a class=&quot;btn btn-lg btn-success mr-lg-5&quot; href=&quot;/starbian&quot; role=&quot;button&quot;&gt;&lt;i class=&quot;material-icons md-48&quot;&gt;device_hub&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;btn btn-lg btn-success disabled&quot; href=&quot;/scope&quot; role=&quot;button&quot;&gt;&lt;i class=&quot;material-icons md-48&quot;&gt;photo&lt;/i&gt;&lt;/a&gt;&lt;/div&gt;&lt;hr/&gt;&lt;div class=&quot;row justify-content-around mt-lg-3 ml-lg-4 mr-lg-4&quot;&gt;&lt;a class=&quot;btn btn-lg btn-success mr-lg-5 &quot; href=&quot;/wai&quot; role=&quot;button&quot;&gt;&lt;i class=&quot;material-icons md-48&quot;&gt;mic&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;btn btn-lg btn-success &quot; href=&quot;/story&quot; role=&quot;button&quot;&gt;&lt;i class=&quot;material-icons md-48&quot;&gt;book&lt;/i&gt;&lt;/a&gt;&lt;/div&gt;">
-      <i class="material-icons md-48">apps</i>
-    </a>
-  </li>
-  <li class="nav-item active mr-lg-5">
-    <a tabindex="0" href="#" class="btn btn-lg btn-success nav-btn" data-container="body" data-html="true" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="&lt;div class=&quot;row justify-content-around mt-lg-3 ml-lg-3 mr-lg-3&quot;&gt;&lt;a class=&quot;btn btn-success mr-lg-5&quot; href=&quot;/clicklang/zh&quot; role=&quot;button&quot;&gt;&lt;span class=&quot;flag-icon flag-icon-background flag-icon-cn&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;btn btn-success &quot; href=&quot;/clicklang/ja&quot; role=&quot;button&quot;&gt;&lt;span class=&quot;flag-icon flag-icon-background flag-icon-jp&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;row justify-content-around mt-lg-5 ml-lg-3 mr-lg-3 mb-lg-3&quot;&gt;&lt;a class=&quot;btn btn-success mr-lg-5&quot; href=&quot;/clicklang/en&quot; role=&quot;button&quot;&gt;&lt;span class=&quot;flag-icon flag-icon-background flag-icon-us&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;btn btn-success &quot; href=&quot;/clicklang/ru&quot; role=&quot;button&quot;&gt;&lt;span class=&quot;flag-icon flag-icon-background flag-icon-ru&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;">
-      <i class="material-icons md-48">language</i>
-    </a>
-  </li>
-    <li class="nav-item active">
-    <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/secauth/login" role="button">
-      <i class="material-icons md-48">person</i>
-    </a>
-  </li>
-  <li class="nav-item active">
-    <a role="button" class="btn btn-warning btn-lg" href="/secauth/signup" role="button">
-      <i class="material-icons md-48">person_add</i>
-    </a>
-  </li>
-  </ul>
 
-<form  id="secauth_navi_lang_form" class="mt-2 mb-2 d-none" method="POST" action="/secauth/language">
-  <button type="submit" class="btn btn-success btn-block mb-3">
-    <spam>登录</span>
-    <i class="material-icons " style="color:green;">done</i>
-  </button>
-  <input type="hidden" name="_token" value="6vscVaCzJlBzz1lJBHJMbNoWt9H1gTcY9DK49Ap4">
-  <div class="form-group text-left">
-    <span class="input-group-text">语言</span>
-    <textarea type="text" id="nav.sec.login.lang" name="lang" class="form-control" cols="40" rows="1"></textarea>
-  </div>
-</form>
 
-      </div>
-      <script>
-        $('[data-toggle="popover"]').popover({container: 'body' });
-      </script>
-    </nav>
+    <script src="/layout/navbar.js" type="text/javascript"></script>
+
     <div class="container-fluid mt-5">
       <br>
     </div>
@@ -140,64 +55,64 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item justify-content-center active">
-          <img src="/wator/images/home/brain.orig.png" style="width:24%;" alt="">
-          <img src="/wator/images/home/brain.header.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/digital.brain.reading.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/brain.skelton.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/brain.orig.png" style="width:24%;" alt="">
+          <img src="/asset/images/home/brain.header.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/digital.brain.reading.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/brain.skelton.jpg" style="width:24%;" alt="">
           <div class="carousel-caption">
             <h3 class="text-danger">三十年后人脑基础研究完成</h3>
           </div>
         </div>
         <div class="carousel-item justify-content-center">
-          <img src="/wator/images/home/ai.nl.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/ai.dnn.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/ai.dream.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/i.am.robot.png" style="width:24%;" alt="">
+          <img src="/asset/images/home/ai.nl.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/ai.dnn.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/ai.dream.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/i.am.robot.png" style="width:24%;" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-danger">三十年后进化出强人工智能</h3>
           </div>
         </div>
         <div class="carousel-item justify-content-center">
-          <img src="/wator/images/home/digital.Consciousness.reading.jpg" style="width:19%;" alt="">
-          <img src="/wator/images/home/digital.brain.block.jpg" style="width:19%;" alt="">
-          <img src="/wator/images/home/digital.soul.jpg" style="width:19%;" alt="">
-          <img src="/wator/images/home/digital.Consciousness.binary.jpg" style="width:19%;" alt="">
-          <img src="/wator/images/home/digital.brain.block.3d.jpg" style="width:19%;" alt="">
+          <img src="/asset/images/home/digital.Consciousness.reading.jpg" style="width:19%;" alt="">
+          <img src="/asset/images/home/digital.brain.block.jpg" style="width:19%;" alt="">
+          <img src="/asset/images/home/digital.soul.jpg" style="width:19%;" alt="">
+          <img src="/asset/images/home/digital.Consciousness.binary.jpg" style="width:19%;" alt="">
+          <img src="/asset/images/home/digital.brain.block.3d.jpg" style="width:19%;" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-danger">四十年后大脑数据读取</h3>
           </div>
         </div>
         <div class="carousel-item justify-content-center">
-          <img src="/wator/images/home/human.robot.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/robot.brain.why.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/robot.brain.white.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/robot.thinking.pose.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/human.robot.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/robot.brain.why.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/robot.brain.white.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/robot.thinking.pose.jpg" style="width:24%;" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-danger">四十年后人脑数据上传机器人</h3>
           </div>
         </div>
         <div class="carousel-item justify-content-center">
           <!--
-          <img src="/wator/images/home/robot.rocket.block.jpg" style="width:24%;transform: rotate(90deg);" alt="">
+          <img src="/asset/images/home/robot.rocket.block.jpg" style="width:24%;transform: rotate(90deg);" alt="">
           -->
-          <img src="/wator/images/home/robot.star.space.jpg" style="width:32%;" alt="">
-          <img src="/wator/images/home/space.travel.jpg" style="width:32%;" alt="">
-          <img src="/wator/images/home/space.travel.land.jpg" style="width:32%;" alt="">
+          <img src="/asset/images/home/robot.star.space.jpg" style="width:32%;" alt="">
+          <img src="/asset/images/home/space.travel.jpg" style="width:32%;" alt="">
+          <img src="/asset/images/home/space.travel.land.jpg" style="width:32%;" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-danger">五十年后机器人宇航殖民</h3>
           </div>
         </div>
         <div class="carousel-item justify-content-center">
-          <img src="/wator/images/home/earth.kepler-20.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/earth.kepler-20.glaxy.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/kepler.daison.jpg" style="width:24%;" alt="">
-          <img src="/wator/images/home/kepler.daison.black.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/earth.kepler-20.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/earth.kepler-20.glaxy.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/kepler.daison.jpg" style="width:24%;" alt="">
+          <img src="/asset/images/home/kepler.daison.black.jpg" style="width:24%;" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-danger">一百年后抵达开普勒星系，建立戴森球</h3>
           </div>
         </div>
         <div class="carousel-item justify-content-center">
-          <img src="/wator/images/home/human.robot.jpg" alt="">
+          <img src="/asset/images/home/human.robot.jpg" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-danger">两百年后抵达宜居行星，重新组建生物人类</h3>
           </div>
@@ -220,13 +135,11 @@
   <div class="col-3">
     <a class="btn  border border-success" href="/wai/pronounce/ja50on" role="button">
       <span class="flag-icon flag-icon-jp"></span>
-      <img src="wator/images/icon/pronunciation-icon-28.jpg" class="rounded">
+      <img src="/asset/images/icon/pronunciation-icon-28.jpg" class="rounded">
       <h3>日语发音练习</h3>
     </a>
   </div>
 </div>
 
-    </div>
-    <a class="d-none" href="/search/link"/>;
   </body>
 </html>
