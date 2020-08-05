@@ -1,0 +1,39 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ../www:/www
+      - ./nginx/conf.d/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /watorvapor/cert:/etc/cert
+      - /watorvapor/log/nginx:/log
+    networks:
+      - outside
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 32M
+        reservations:
+          cpus: '0.1'
+          memory: 16M
+  wss:
+    image: node:lts
+    volumes:
+      - ../wss:/opt/wss
+    working_dir: "/opt/wss"
+    command: node ./index.js
+    networks:
+      - outside
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 32M
+        reservations:
+          cpus: '0.1'
+          memory: 16M
+networks:
+  outside:
+    external:
+      name: "host"
