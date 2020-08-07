@@ -12,134 +12,135 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css" integrity="sha256-0n6YDYIexWJmHyTKtRRHTXvoanQrXpFfpsfv0h53qvk=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
     <link rel="stylesheet" href="/asset/css/top.css">
-  </head>
-  <body>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/js/bootstrap.min.js" integrity="sha256-0IiaoZCI++9oAAvmCb5Y0r93XkuhvJpRalZLffQXLok=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
     <script src="/asset/js/ga.js" type="text/javascript"></script>
-    <script src="/asset/js/lang.js" type="text/javascript"></script>
-
-
-
+    <script src="/asset/js/lang.js" type="module"></script>
+    <script>
+      $('[data-toggle="popover"]').popover({container: 'body' });
+    </script>
+  </head>
+  <body>
     <script src="/layout/navbar.js" type="text/javascript"></script>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="vue-navbar-top">
+      <w-navbar></w-navbar>
+    </nav>
 
-    <div class="container-fluid mt-5">
-      <br>
-    </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 pt-5"  id="vue-lang-top">
       <style type="text/css">
-.tales {
-  width: 100%;
-}
-.carousel-inner{
-  width:100%;
-  height:300px !important;
-  max-height: 400px !important;
-}
-</style>
+        .tales {
+          width: 100%;
+        }
+        .carousel-inner{
+          width:100%;
+          height:300px !important;
+          max-height: 400px !important;
+        }
+      </style>
 
-<div class="row justify-content-center" >
-  <div class="col-11 bg-secondary">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item justify-content-center active">
-          <img src="/asset/images/home/brain.orig.png" style="width:24%;" alt="">
-          <img src="/asset/images/home/brain.header.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/digital.brain.reading.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/brain.skelton.jpg" style="width:24%;" alt="">
-          <div class="carousel-caption">
-            <h3 class="text-danger">三十年后人脑基础研究完成</h3>
-          </div>
-        </div>
-        <div class="carousel-item justify-content-center">
-          <img src="/asset/images/home/ai.nl.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/ai.dnn.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/ai.dream.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/i.am.robot.png" style="width:24%;" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="text-danger">三十年后进化出强人工智能</h3>
-          </div>
-        </div>
-        <div class="carousel-item justify-content-center">
-          <img src="/asset/images/home/digital.Consciousness.reading.jpg" style="width:19%;" alt="">
-          <img src="/asset/images/home/digital.brain.block.jpg" style="width:19%;" alt="">
-          <img src="/asset/images/home/digital.soul.jpg" style="width:19%;" alt="">
-          <img src="/asset/images/home/digital.Consciousness.binary.jpg" style="width:19%;" alt="">
-          <img src="/asset/images/home/digital.brain.block.3d.jpg" style="width:19%;" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="text-danger">四十年后大脑数据读取</h3>
-          </div>
-        </div>
-        <div class="carousel-item justify-content-center">
-          <img src="/asset/images/home/human.robot.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/robot.brain.why.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/robot.brain.white.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/robot.thinking.pose.jpg" style="width:24%;" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="text-danger">四十年后人脑数据上传机器人</h3>
-          </div>
-        </div>
-        <div class="carousel-item justify-content-center">
-          <!--
-          <img src="/asset/images/home/robot.rocket.block.jpg" style="width:24%;transform: rotate(90deg);" alt="">
-          -->
-          <img src="/asset/images/home/robot.star.space.jpg" style="width:32%;" alt="">
-          <img src="/asset/images/home/space.travel.jpg" style="width:32%;" alt="">
-          <img src="/asset/images/home/space.travel.land.jpg" style="width:32%;" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="text-danger">五十年后机器人宇航殖民</h3>
-          </div>
-        </div>
-        <div class="carousel-item justify-content-center">
-          <img src="/asset/images/home/earth.kepler-20.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/earth.kepler-20.glaxy.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/kepler.daison.jpg" style="width:24%;" alt="">
-          <img src="/asset/images/home/kepler.daison.black.jpg" style="width:24%;" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="text-danger">一百年后抵达开普勒星系，建立戴森球</h3>
-          </div>
-        </div>
-        <div class="carousel-item justify-content-center">
-          <img src="/asset/images/home/human.robot.jpg" alt="">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="text-danger">两百年后抵达宜居行星，重新组建生物人类</h3>
+      <div class="row justify-content-center">
+        <div class="col-11 bg-secondary">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item justify-content-center active">
+                <img src="/asset/images/home/brain.orig.png" style="width:24%;" alt="">
+                <img src="/asset/images/home/brain.header.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/digital.brain.reading.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/brain.skelton.jpg" style="width:24%;" alt="">
+                <div class="carousel-caption">
+                  <h3 class="text-danger">{{ carousel.caption_1 }}</h3>
+                </div>
+              </div>
+              <div class="carousel-item justify-content-center">
+                <img src="/asset/images/home/ai.nl.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/ai.dnn.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/ai.dream.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/i.am.robot.png" style="width:24%;" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="text-danger">{{ carousel.caption_2 }}</h3>
+                </div>
+              </div>
+              <div class="carousel-item justify-content-center">
+                <img src="/asset/images/home/digital.Consciousness.reading.jpg" style="width:19%;" alt="">
+                <img src="/asset/images/home/digital.brain.block.jpg" style="width:19%;" alt="">
+                <img src="/asset/images/home/digital.soul.jpg" style="width:19%;" alt="">
+                <img src="/asset/images/home/digital.Consciousness.binary.jpg" style="width:19%;" alt="">
+                <img src="/asset/images/home/digital.brain.block.3d.jpg" style="width:19%;" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="text-danger">{{ carousel.caption_3 }}</h3>
+                </div>
+              </div>
+              <div class="carousel-item justify-content-center">
+                <img src="/asset/images/home/human.robot.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/robot.brain.why.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/robot.brain.white.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/robot.thinking.pose.jpg" style="width:24%;" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="text-danger">{{ carousel.caption_4 }}</h3>
+                </div>
+              </div>
+              <div class="carousel-item justify-content-center">
+                <!--
+                <img src="/asset/images/home/robot.rocket.block.jpg" style="width:24%;transform: rotate(90deg);" alt="">
+                -->
+                <img src="/asset/images/home/robot.star.space.jpg" style="width:32%;" alt="">
+                <img src="/asset/images/home/space.travel.jpg" style="width:32%;" alt="">
+                <img src="/asset/images/home/space.travel.land.jpg" style="width:32%;" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="text-danger">{{ carousel.caption_5 }}</h3>
+                </div>
+              </div>
+              <div class="carousel-item justify-content-center">
+                <img src="/asset/images/home/earth.kepler-20.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/earth.kepler-20.glaxy.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/kepler.daison.jpg" style="width:24%;" alt="">
+                <img src="/asset/images/home/kepler.daison.black.jpg" style="width:24%;" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="text-danger">{{ carousel.caption_6 }}</h3>
+                </div>
+              </div>
+              <div class="carousel-item justify-content-center">
+                <img src="/asset/images/home/human.robot.jpg" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 class="text-danger">{{ carousel.caption_7 }}</h3>
+                </div>
+              </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
         </div>
       </div>
-
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <hr/>
+      <div class="row justify-content-center" >
+        <div class="col-3">
+          <a class="btn  border border-success" href="/wai/pronounce/ja50on" role="button">
+            <span class="flag-icon flag-icon-jp"></span>
+            <img src="/asset/images/icon/pronunciation-icon-28.jpg" class="rounded">
+            <h3>{{ dashboard.learnJ }}</h3>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<hr/>
-<div class="row justify-content-center" >
-  <div class="col-3">
-    <a class="btn  border border-success" href="/wai/pronounce/ja50on" role="button">
-      <span class="flag-icon flag-icon-jp"></span>
-      <img src="/asset/images/icon/pronunciation-icon-28.jpg" class="rounded">
-      <h3>日语发音练习</h3>
-    </a>
-  </div>
-</div>
-
   </body>
 </html>
