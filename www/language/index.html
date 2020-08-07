@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <title>Wator</title>
+    <script>
+      const constKeyLanguangeCode = 'lang_code';
+      const lang = location.search.replace('?','');
+      console.log('::lang=<',lang,'>');
+      if(lang) {
+        localStorage.setItem(constKeyLanguangeCode,lang);
+      }
+      history.back();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
