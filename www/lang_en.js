@@ -1,14 +1,14 @@
 export const data = {
   carousel:{
-    caption_1:'30年後、人間の脳の基礎研究が完成',
-    caption_2:'30年後、強力な人工知能が進化しました',
-    caption_3:'40年後に読まれた脳データ',  
-    caption_4:'40年後、人間の脳のデータアップロードロボット',  
-    caption_5:'50年後のロボット航空宇宙植民地化',  
-    caption_6:'100年後にケプラー銀河に到着し、ダイソン球を確立',  
-    caption_7:'200年後に居住可能な惑星に到着し、生物学的人間を再編成した'
+    caption_1:'Thirty years later, basic research on the human brain is completed',
+    caption_2:'Thirty years later, strong artificial intelligence evolved',
+    caption_3:'Brain data read after forty years',  
+    caption_4:'Forty years later, human brain data upload robot',  
+    caption_5:'Robotic aerospace colonization fifty years later',  
+    caption_6:'Arrived in the Kepler galaxy a hundred years later and established the Dyson sphere',  
+    caption_7:'Arrived on a habitable planet two hundred years later and reorganized biological humans'
   },
   dashboard:{
-    learnJ:'日本語の発音練習'
+    learnJ:'Japanese pronunciation practice'
   }
 }
