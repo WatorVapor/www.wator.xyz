@@ -53,30 +53,25 @@
       
       <div class="row justify-content-md-center">
         <div class="col-lg-8">
-          <form  id="secauth_upload_form" class="mt-2 mb-2" method="POST" action="#">
-            <input type="hidden" name="_token" value="1aXWhuQAuW9NVtpYv88xdSQwCIhJqbf7Os8itHjv">     
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">{{ tokenlabel }}</span>
-              </div>
-              <textarea type="text" id="signup-tokenKey" name="accountKeyId" class="form-control" rows="1" readonly></textarea>
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-success">
-                  <span>{{ nextstep }}</span><i class="material-icons " style="color:green;">done</i>
-                </button>
-              </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">{{ tokenlabel }}</span>
             </div>
-          </form>
+            <textarea type="text" id="signup-tokenKey" name="accountKeyId" class="form-control" rows="1" readonly></textarea>
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-success">
+                <span>{{ nextstep }}</span><i class="material-icons " style="color:green;">done</i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       
       <div class="row justify-content-md-center">
-        <div class="col-md-8 bg-info">
-          <pre id="signup-secretKey" class="text-left small d-none" rows="1"></pre>
+        <div class="col-md-8 bg-primary justify-content-md-center">
+          <h1 id="signup-secretKey" class="text-center d-none"></h1>
         </div>
-      </div>
-      
-      
+      </div>     
       <div class="row  justify-content-md-center mb-3" id="operate_key">
         <div class="col-md-8 bg-warning">
           <pre id="noticeBox" class="text-left text-danger ">{{ warning }}</pre>
