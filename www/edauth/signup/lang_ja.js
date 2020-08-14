@@ -18,6 +18,7 @@ export const data = {
     ファイルとしてダウンロードし、適切に保存してください。
 `,
   downloadbtn:'ファイルとして保存',
+  downloadQRcodebtn:'下载二维码',
   clipboardbtn:'クリップボードにコピー',  
   tokenlabel:'アカウントトークン',
   nextstep:'次のステップ'

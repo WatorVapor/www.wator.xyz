@@ -18,6 +18,7 @@ export const data = {
    Please download it as a file and save it properly.
    `,
   downloadbtn:'Save as file',
+  downloadQRcodebtn:'下载二维码',
   clipboardbtn:'Copy to clipboard',  
   tokenlabel:'Account token',
   nextstep:'Next step'

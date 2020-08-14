@@ -15,7 +15,8 @@ export const data = {
   这个密钥非常重要，如果丢失将无法登录这个网站。
   这个密钥仅仅被存储在浏览器的本地临时区域，清理网页履历等行为都会丢失。
   请下载成文件，妥善保存。`,
-  downloadbtn:'保存成文件',
+  downloadbtn:'下载文本文件',
+  downloadQRcodebtn:'下载二维码',
   clipboardbtn:'复制到剪贴板',  
   tokenlabel:'账户令牌',
   nextstep:'下一步'

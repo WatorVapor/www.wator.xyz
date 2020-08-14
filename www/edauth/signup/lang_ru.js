@@ -18,6 +18,7 @@ export const data = {
     Загрузите его как файл и сохраните должным образом.
    `,
   downloadbtn:'Сохранить как файл',
+  downloadQRcodebtn:'下载二维码',
   clipboardbtn:'Скопировать в буфер обмена',  
   tokenlabel:'Токен аккаунта',
   nextstep:'Следующий шаг'
