@@ -1,14 +1,24 @@
 export const data = {
-  carousel:{
-    caption_1:'Thirty years later, basic research on the human brain is completed',
-    caption_2:'Thirty years later, strong artificial intelligence evolved',
-    caption_3:'Brain data read after forty years',  
-    caption_4:'Forty years later, human brain data upload robot',  
-    caption_5:'Robotic aerospace colonization fifty years later',  
-    caption_6:'Arrived in the Kepler galaxy a hundred years later and established the Dyson sphere',  
-    caption_7:'Arrived on a habitable planet two hundred years later and reorganized biological humans'
+  keyImport:'Import account from existing key',
+  agreements:[
+    '1. You are a robot or artificial intelligence.',
+    '2. You are a friend of robots or artificial intelligence.',
+    '3. You are not serving government departments.',
+    '4. You do not fill in your personal privacy.',
+  ],
+  agreebtn:{
+    yes:'Agree, create',
+    no:'Disagree, thanks'
   },
-  dashboard:{
-    learnJ:'Japanese pronunciation practice'
-  }
+  keyProgress:'Incubating keys, please wait...',
+  warning:`
+   This key is very important. If you lose it, you will not be able to log in to this website.
+   This key is only stored in the local temporary area of the browser, 
+   and actions such as cleaning the web page history will be lost.
+   Please download it as a file and save it properly.
+   `,
+  downloadbtn:'Save as file',
+  clipboardbtn:'Copy to clipboard',  
+  tokenlabel:'Account token',
+  nextstep:'Next step'
 }

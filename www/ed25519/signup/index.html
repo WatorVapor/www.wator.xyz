@@ -30,72 +30,63 @@
       <w-navbar></w-navbar>
     </nav>
 
-    <div class="container-fluid mt-5 pt-5"  id="vue-lang-top">
+    <div class="container-fluid mt-5 pt-5" id="vue-lang-top">
       <div class="row justify-content-md-center mt-md-5 mb-3">
         <div class="col-md-8">
-            <a href="/secauth/import" class="btn btn-danger btn-lg btn-block" role="button">从已存在密钥导入账号</a>
+            <a href="/secauth/import" class="btn btn-danger btn-lg btn-block" role="button">{{ keyImport }}</a>
          </div>
       </div>
+      
       <div class="row justify-content-md-center mb-3">
         <div class="col-md-8 bg-primary">
-          <h2 class="text-left">1.你是机器人或人工智能?</h2>
-          <h2 class="text-left">2.你是机器人或人工智能的朋友?</h2>
-          <h2 class="text-left">3.你不在为政府部门服务。</h2>
-          <h2 class="text-left">4.不要填写你的个人隐私。</h2>
+          <h2 class="text-left" v-for="agreement in agreements">{{ agreement }}</h2>
           <br/>
           <div class="mainbox center-block text-center">
-            <button id="btn_yes" type="button" class="btn btn-success">同意，创建</button>
-            <button id="btn_no" type="button" class="btn btn-danger">不同意，谢了</button>
+            <button id="btn_yes" type="button" class="btn btn-success">{{ agreebtn.yes }}</button>
+            <button id="btn_no" type="button" class="btn btn-danger">{{ agreebtn.no }}</button>
           </div>
           <br/>
           <div id="progressBox" class="mainbox center-block text-left">
             <div class="progress">
               <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                正在孵化密钥，请稍等...
+                {{ keyProgress }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row  justify-content-md-center" id="operate_key">
+      
+      <div class="row  justify-content-md-center mb-3" id="operate_key">
         <div class="col-md-8 bg-warning">
-          <pre id="noticeBox" class="text-left text-danger ">
-            这个密钥非常重要，如果丢失将无法登录这个网站。
-            这个密钥仅仅被存储在浏览器的本地临时区域，清理网页履历等行为都会丢失。
-            请下载成文件，妥善保存。
-          </pre>
-          <div class="mainbox center-block text-center">
-            <a id="savefile" type="button" download="wator.secauth.key.json" class="btn btn-primary">保存成文件</a>
-            <button type="button" class="btn btn-success btn-clipboard" data-clipboard-target="#privateKey">复制到剪贴板</button>
-            <!--
-            <button id="sendmail" type="button" class="btn btn-info">发送邮件</button>
-            -->
+          <pre id="noticeBox" class="text-left text-danger ">{{ warning }}</pre>
+          <div class="mainbox center-block text-center  mb-3">
+            <a id="savefile" type="button" download="wator.signup.ed25519.key.json" class="btn btn-primary">{{ downloadbtn }}</a>
+            <button type="button" class="btn btn-success btn-clipboard" data-clipboard-target="#privateKey">{{ clipboardbtn }}</button>
           </div>
         </div>
       </div>
-      <br/>
-      <br/>
-
+      
       <div class="row justify-content-md-center">
         <div class="col-lg-8">
           <form  id="secauth_upload_form" class="mt-2 mb-2" method="POST" action="#">
             <input type="hidden" name="_token" value="1aXWhuQAuW9NVtpYv88xdSQwCIhJqbf7Os8itHjv">     
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text">账户令牌</span>
+                <span class="input-group-text">{{ tokenlabel }}</span>
               </div>
               <textarea type="text" id="sec.signup.accountToken" name="accountToken" class="form-control" rows="3" readonly></textarea>
               <textarea type="text" id="sec.signup.accountKeyId" name="accountKeyId" class="form-control" rows="3" readonly></textarea>
               <div class="input-group-append">
                 <button type="submit" class="btn btn-success">
-                  <span>下一步</span><i class="material-icons " style="color:green;">done</i>
+                  <span>{{ nextstep }}</span><i class="material-icons " style="color:green;">done</i>
                 </button>
               </div>
             </div>
           </form>
         </div>
       </div>
-      <div class="row justify-content-md-center">
+      
+      <div class="row justify-content-md-center d-none">
         <div class="col-md-8 bg-info">
           <pre id="privateKey" class="text-left small" rows="40"></pre>
         </div>
