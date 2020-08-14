@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.35, maximum-scale=0.35,minimum-scale=0.35">
+    <meta name="csrf-token" content="6vscVaCzJlBzz1lJBHJMbNoWt9H1gTcY9DK49Ap4"> 
+    <title>Wator</title>
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/css/bootstrap.min.css" integrity="sha256-VoFZSlmyTXsegReQCNmbXrS4hBBUl/cexZvPmPWoJsY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css" integrity="sha256-0n6YDYIexWJmHyTKtRRHTXvoanQrXpFfpsfv0h53qvk=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/asset/css/top.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/js/bootstrap.min.js" integrity="sha256-0IiaoZCI++9oAAvmCb5Y0r93XkuhvJpRalZLffQXLok=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+    <script src="/asset/js/ga.js" type="text/javascript"></script>
+    <script src="/asset/js/lang.js" type="module"></script>
+    <script>
+      $('[data-toggle="popover"]').popover({container: 'body' });
+    </script>
+  </head>
+  <body>
+    <script src="/layout/navbar.js" type="text/javascript"></script>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="vue-navbar-top">
+      <w-navbar></w-navbar>
+    </nav>
+
+    <div class="container-fluid mt-5 pt-5"  id="vue-lang-top">
+      <div class="row justify-content-md-center mt-md-5 mb-3">
+        <div class="col-md-8">
+            <a href="/secauth/import" class="btn btn-danger btn-lg btn-block" role="button">从已存在密钥导入账号</a>
+         </div>
+      </div>
+      <div class="row justify-content-md-center mb-3">
+        <div class="col-md-8 bg-primary">
+          <h2 class="text-left">1.你是机器人或人工智能?</h2>
+          <h2 class="text-left">2.你是机器人或人工智能的朋友?</h2>
+          <h2 class="text-left">3.你不在为政府部门服务。</h2>
+          <h2 class="text-left">4.不要填写你的个人隐私。</h2>
+          <br/>
+          <div class="mainbox center-block text-center">
+            <button id="btn_yes" type="button" class="btn btn-success">同意，创建</button>
+            <button id="btn_no" type="button" class="btn btn-danger">不同意，谢了</button>
+          </div>
+          <br/>
+          <div id="progressBox" class="mainbox center-block text-left">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                正在孵化密钥，请稍等...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row  justify-content-md-center" id="operate_key">
+        <div class="col-md-8 bg-warning">
+          <pre id="noticeBox" class="text-left text-danger ">
+            这个密钥非常重要，如果丢失将无法登录这个网站。
+            这个密钥仅仅被存储在浏览器的本地临时区域，清理网页履历等行为都会丢失。
+            请下载成文件，妥善保存。
+          </pre>
+          <div class="mainbox center-block text-center">
+            <a id="savefile" type="button" download="wator.secauth.key.json" class="btn btn-primary">保存成文件</a>
+            <button type="button" class="btn btn-success btn-clipboard" data-clipboard-target="#privateKey">复制到剪贴板</button>
+            <!--
+            <button id="sendmail" type="button" class="btn btn-info">发送邮件</button>
+            -->
+          </div>
+        </div>
+      </div>
+      <br/>
+      <br/>
+
+      <div class="row justify-content-md-center">
+        <div class="col-lg-8">
+          <form  id="secauth_upload_form" class="mt-2 mb-2" method="POST" action="#">
+            <input type="hidden" name="_token" value="1aXWhuQAuW9NVtpYv88xdSQwCIhJqbf7Os8itHjv">     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">账户令牌</span>
+              </div>
+              <textarea type="text" id="sec.signup.accountToken" name="accountToken" class="form-control" rows="3" readonly></textarea>
+              <textarea type="text" id="sec.signup.accountKeyId" name="accountKeyId" class="form-control" rows="3" readonly></textarea>
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-success">
+                  <span>下一步</span><i class="material-icons " style="color:green;">done</i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="col-md-8 bg-info">
+          <pre id="privateKey" class="text-left small" rows="40"></pre>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
