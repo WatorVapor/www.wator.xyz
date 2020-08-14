@@ -15,7 +15,21 @@ const navbarTemplate =
     </ul>
     <ul class="navbar-nav nav justify-content-end">
       <li class="nav-item dropdown mr-5">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle btn-lg" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="material-icons md-48">apps</i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownLang">
+          <div class="row ml-2">
+            <div class="col">
+              <a class="" href="/ermu"><i class="material-icons md-48">search</i></a>
+            </div>
+            <div class="col">
+            </div>
+          </div> 
+        </div>
+      </li>
+      <li class="nav-item dropdown mr-5">
+        <a class="nav-link dropdown-toggle btn-lg" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="material-icons md-48">language</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownLang">
