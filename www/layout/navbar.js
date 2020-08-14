@@ -52,12 +52,12 @@ const navbarTemplate =
         </div>
       </li>
       <li class="nav-item active">
-        <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/ed25519/signin" role="button">
+        <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/signin" role="button">
           <i class="material-icons md-48">person</i>
         </a>
       </li>
       <li class="nav-item active">
-        <a role="button" class="btn btn-warning btn-lg" href="/ed25519/signup" role="button">
+        <a role="button" class="btn btn-warning btn-lg" href="/edauth/signup" role="button">
           <i class="material-icons md-48">person_add</i>
         </a>
       </li>
