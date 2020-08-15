@@ -7,7 +7,7 @@ export const data = {
     '4.你不要填写你的个人隐私。',
   ],
   agreebtn:{
-    yes:'同意，创建',
+    yes:'同意，创建新密钥',
     no:'不同意，谢了'
   },
   keyProgress:'正在孵化密钥，请稍等...',
@@ -18,6 +18,8 @@ export const data = {
   downloadbtn:'下载文本文件',
   downloadQRcodebtn:'下载二维码',
   clipboardbtn:'复制到剪贴板',  
-  tokenlabel:'账户令牌',
-  nextstep:'下一步'
+  tokenlabel:'账户令牌:',
+  namelabel:'账户名字:',
+  uploadeAccount:'上传登录信息',  
+  nextstep:'下一步',
 }
