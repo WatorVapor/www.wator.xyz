@@ -1,6 +1,7 @@
 const http = require('http');
 const WebSocket = require('ws');
 const fs = require('fs');
+const { execSync } = require('child_process')
 
 const socketPath = '/tmp/wator/wss.wator.xyz' ;
 fs.existsSync(socketPath) && fs.unlinkSync(socketPath);
@@ -8,6 +9,7 @@ const hs = http.createServer();
 const wss = new WebSocket.Server({server: hs});
 hs.listen(socketPath, () => {
   console.log('hs.listen:socketPath=<',socketPath,'>');
+  execSync(`chmod 777 ${socketPath}`);
 });
 wss.on('connection', (ws) => {
   onConnected(ws);

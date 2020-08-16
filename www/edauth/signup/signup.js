@@ -35,4 +35,5 @@ const onUIClickUploadAccount = (elem) => {
   const msg = {act:'signup'};
   const tokenMsg = edauth.sign(msg);
   console.log('onUIClickUploadAccount::tokenMsg=<',tokenMsg,'>');
+  sendMsg(tokenMsg);
 }
