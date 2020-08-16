@@ -1,4 +1,5 @@
 const edauth = new EDAuth();
+const wss = new WatorWss();
 const onUIClickCreateKey = (elem) => {
   edauth.create();
   const token = edauth.getTokenKey();
@@ -35,5 +36,5 @@ const onUIClickUploadAccount = (elem) => {
   const msg = {act:'signup'};
   const tokenMsg = edauth.sign(msg);
   console.log('onUIClickUploadAccount::tokenMsg=<',tokenMsg,'>');
-  sendMsg(tokenMsg);
+  wss.sendMsg(tokenMsg);
 }

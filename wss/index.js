@@ -44,13 +44,15 @@ const doPingWS = () => {
 };
 const interval = setInterval(doPingWS, 10000);
 
+const EDAuth = require('./edauth.js');
+const auth = new EDAuth();
 const onWSMsg = (message,ws) => {
-  console.log('onWSMsg: message=<', message,'>');
   try {
     const jsonMsg = JSON.parse(message);
-    if(jsonMsg) {
-    }
+    const goodAuth = auth.verify(jsonMsg);
+    console.log('onWSMsg: goodAuth=<', goodAuth,'>');
   } catch(e) {
-    
+    console.log('onWSMsg: message=<', message,'>');
+    console.log('onWSMsg: e=<', e,'>');    
   }
 };

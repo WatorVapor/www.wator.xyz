@@ -1,31 +1,33 @@
 const uri = 'wss://' + location.hostname + '/api/wss';
-const socket = new WebSocket(uri);
-socket.addEventListener('open', (event) => {
-  setTimeout(() => {
-    onOpenWSS(event);
-  },1);
-});
-socket.addEventListener('close', (event) => {
-  onCloseWSS(event);
-});
-socket.addEventListener('error', (event) => {
-  onErrorWSS(event);
-});
-socket.addEventListener('message', (event) => {
-  onMessageWSS(event);
-});
-
-
-const onOpenWSS = (event)=> {
-  console.log('onOpenWSS:: event=<', event,'>');
-};
-const onCloseWSS = (event)=> {
-  console.log('onCloseWSS:: event=<', event,'>');
-};
-const onErrorWSS = (event)=> {
-  console.log('onErrorWSS:: event=<', event,'>');
-};
-
-const sendMsg = (msg) => {
-  socket.send(JSON.stringify(msg));
+class WatorWss {
+  constructor() {
+    this.socket = new WebSocket(uri);
+    const self = this;
+    this.socket.addEventListener('open', (evt) => {
+      setTimeout(() => {
+        self.onOpenWSS(evt);
+      },1);
+    });
+    this.socket.addEventListener('close', (evt) => {
+      self.onCloseWSS(evt);
+    });
+    this.socket.addEventListener('error', (evt) => {
+      self.onErrorWSS(evt);
+    });
+    this.socket.addEventListener('message', (evt) => {
+      self.onMessageWSS(evt);
+    });    
+  }
+  onOpenWSS = (evt)=> {
+    console.log('onOpenWSS:: evt=<', evt,'>');
+  };
+  onCloseWSS = (evt)=> {
+    console.log('onCloseWSS:: evt=<', evt,'>');
+  };
+  onErrorWSS = (evt)=> {
+    console.log('onErrorWSS:: evt=<', evt,'>');
+  };
+  sendMsg = (msg) => {
+    this.socket.send(JSON.stringify(msg));
+  }
 }
