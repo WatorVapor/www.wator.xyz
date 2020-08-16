@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.35, maximum-scale=0.35,minimum-scale=0.35">
+    <meta name="csrf-token" content="6vscVaCzJlBzz1lJBHJMbNoWt9H1gTcY9DK49Ap4"> 
+    <title>Wator</title>
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/css/bootstrap.min.css" integrity="sha256-VoFZSlmyTXsegReQCNmbXrS4hBBUl/cexZvPmPWoJsY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css" integrity="sha256-0n6YDYIexWJmHyTKtRRHTXvoanQrXpFfpsfv0h53qvk=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="/asset/css/top.css">
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="vue-navbar-top">
+      <w-navbar></w-navbar>
+    </nav>
+
+    <div class="container-fluid mt-5 pt-5" id="vue-lang-top">
+      <div class="row justify-content-md-center mt-md-5 mb-3">
+        <div class="col-md-8">
+            <a href="/edauth/import" class="btn btn-danger btn-lg btn-block" role="button">{{ keyImport }}</a>
+         </div>
+      </div>
+      
+      <div class="row justify-content-md-center mb-3">
+        <div class="col-md-8 bg-primary">
+          <h2 class="text-left" v-for="agreement in agreements">{{ agreement }}</h2>
+          <br/>
+          <div class="mainbox center-block text-center mb-3">
+            <button type="button" class="btn btn-success" onclick="onUIClickCreateKey(this)">{{ agreebtn.yes }}</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row justify-content-md-center">
+        <div class="col-lg-8">
+          <div class="form-group row">
+            <label for="signup-tokenKey" class="col-sm-2 col-form-label">{{ tokenlabel }}</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="signup-tokenKey">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="signup-name" class="col-sm-2 col-form-label">{{ namelabel }}</label>
+            <div class="col-sm-10">
+              <input type="input" class="form-control" id="signup-name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-3 offset-sm-9">
+              <button class="btn btn-success" onclick="onUIClickUploadAccount(this)">
+                <span>{{ uploadeAccount }}</span><i class="material-icons "style="color:green;">done</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row justify-content-md-center">
+        <div class="col-md-8 bg-primary justify-content-md-center pt-3 pb-2">
+          <h6 id="signup-secretKey" class="text-center d-none"></h6>
+          <div class="d-none" id="signup-secretKey-QRCode"></div >
+        </div>
+      </div>     
+      <div class="row  justify-content-md-center mb-3" id="operate_key">
+        <div class="col-md-8 bg-warning">
+          <pre id="noticeBox" class="text-left text-danger ">{{ warning }}</pre>
+          <div class="mainbox center-block text-center  mb-3">
+            <a id="signup-download-qrcode" type="button" download="wator.signup.ed25519.key.qrcode.png" class="btn btn-primary">{{ downloadQRcodebtn }}</a>
+            <a id="signup-download" type="button" download="wator.signup.ed25519.key.json" class="btn btn-primary">{{ downloadbtn }}</a>
+            <button type="button" class="btn btn-success btn-clipboard" data-clipboard-target="#signup-secretKey">{{ clipboardbtn }}</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/js/bootstrap.min.js" integrity="sha256-0IiaoZCI++9oAAvmCb5Y0r93XkuhvJpRalZLffQXLok=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl-fast.min.js" integrity="sha256-PsU1wASu6yJXhdjpP7M7+Z9S45m9ffwBlptWKbrqUTE=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl-util@0.15.1/nacl-util.min.js" integrity="sha256-l9yVE3YPWsTD48cjI2ABjQo466SAR0oLKj1VzQOlZ1U=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/base-58@0.0.1/Base58.js" integrity="sha256-d34IQcl2k8MvM/V8g3tBbuqy1cUoJ+G+H4dcDFVisnY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.0.0/crypto-js.js" integrity="sha256-u605MhHOcevkqVw8DJ2q3X7kZTVTVXot4PjxIucLiMM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.qrcode@1.0.3/jquery.qrcode.min.js" integrity="sha256-9MzwK2kJKBmsJFdccXoIDDtsbWFh8bjYK/C7UjB1Ay0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js" integrity="sha256-xUHvBjJ4hahBW8qN9gceFBibSFUzbe9PNttUvehITzY=" crossorigin="anonymous"></script>
+    <script src="/asset/js/ga.js" type="text/javascript"></script>
+    <script src="/asset/js/wss.js" type="text/javascript"></script>
+    <script src="/asset/js/lang.js" type="module"></script>
+    <script>
+      $('[data-toggle="popover"]').popover({container: 'body' });
+      new ClipboardJS('.btn');
+    </script>
+    <script src="/layout/navbar.js" type="text/javascript"></script>
+    <script src="/asset/js/edauth/edauth.js" type="text/javascript"></script>
+    <script src="./signup.js" type="text/javascript"></script>
+  </body>
+</html>
