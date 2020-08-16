@@ -1,11 +1,12 @@
+const edauth = new EDAuth();
 const onUIClickCreateKey = (elem) => {
-  createEdAuthKey();
-  const token = getTokenKey();
+  edauth.create();
+  const token = edauth.getTokenKey();
   const tokenElem = document.getElementById('signup-tokenKey');
   if(token && tokenElem) {
     tokenElem.value = token;
   }
-  const secret = getSecretKey();
+  const secret = edauth.getSecretKey();
   const secretElem = document.getElementById('signup-secretKey');
   if(secret && secretElem) {
     secretElem.textContent = secret;
@@ -30,10 +31,8 @@ const onUIClickCreateKey = (elem) => {
 }
 
 const onUIClickUploadAccount = (elem) => {
-  console.log('onUIClickUploadAccount::elem=<',elem,'>');
-  const token = getTokenKey();
-  console.log('onUIClickUploadAccount::token=<',token,'>');
+  //console.log('onUIClickUploadAccount::elem=<',elem,'>');
   const msg = {act:'signup'};
-  const tokenMsg = signMsgByAccoutKey(msg);
+  const tokenMsg = edauth.sign(msg);
   console.log('onUIClickUploadAccount::tokenMsg=<',tokenMsg,'>');
 }
