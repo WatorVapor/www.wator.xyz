@@ -41,6 +41,6 @@ const onUIClickUploadAccount = (elem) => {
     }
   };
   const tokenMsg = edauth.sign(msg);
-  console.log('onUIClickUploadAccount::tokenMsg=<',tokenMsg,'>');
+  //console.log('onUIClickUploadAccount::tokenMsg=<',tokenMsg,'>');
   wss.sendMsg(tokenMsg);
 }
