@@ -46,6 +46,8 @@ const interval = setInterval(doPingWS, 10000);
 
 const EDAuth = require('./edauth.js');
 const auth = new EDAuth();
+
+
 const onWSMsg = (message,ws) => {
   try {
     const jsonMsg = JSON.parse(message);
@@ -61,7 +63,12 @@ const onWSMsg = (message,ws) => {
     console.log('onWSMsg: e=<', e,'>');    
   }
 };
+
+const KVFolder = require('./KVFolder.js');
+const strConstAccoutPath = '/storage/master/accout/accout.www.wator.xyz/accout';
+const kvAccount = new KVFolder(strConstAccoutPath);
 const onGoodAuthMsg = (payload,token) => {
   console.log('onGoodAuthMsg: payload=<', payload,'>');
   console.log('onGoodAuthMsg: token=<', token,'>');
+  kvAccount.put(token,JSON.stringify(payload));
 }
