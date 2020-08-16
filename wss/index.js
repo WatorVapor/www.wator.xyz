@@ -50,9 +50,18 @@ const onWSMsg = (message,ws) => {
   try {
     const jsonMsg = JSON.parse(message);
     const goodAuth = auth.verify(jsonMsg);
-    console.log('onWSMsg: goodAuth=<', goodAuth,'>');
+    if(goodAuth) {
+      onGoodAuthMsg(jsonMsg.payload,jsonMsg.token);
+    } else {
+      console.log('onWSMsg: goodAuth=<', goodAuth,'>');
+      console.log('onWSMsg: jsonMsg=<', jsonMsg,'>');
+    }
   } catch(e) {
     console.log('onWSMsg: message=<', message,'>');
     console.log('onWSMsg: e=<', e,'>');    
   }
 };
+const onGoodAuthMsg = (payload,token) => {
+  console.log('onGoodAuthMsg: payload=<', payload,'>');
+  console.log('onGoodAuthMsg: token=<', token,'>');
+}

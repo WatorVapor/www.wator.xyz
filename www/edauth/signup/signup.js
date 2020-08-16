@@ -33,7 +33,13 @@ const onUIClickCreateKey = (elem) => {
 
 const onUIClickUploadAccount = (elem) => {
   //console.log('onUIClickUploadAccount::elem=<',elem,'>');
-  const msg = {act:'signup'};
+  const nameElem = document.getElementById('signup-name');
+  const msg = {
+    act:'signup',
+    profile:{
+      name:nameElem.value
+    }
+  };
   const tokenMsg = edauth.sign(msg);
   console.log('onUIClickUploadAccount::tokenMsg=<',tokenMsg,'>');
   wss.sendMsg(tokenMsg);

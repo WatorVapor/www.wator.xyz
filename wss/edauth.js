@@ -8,7 +8,7 @@ class EDAuth {
     
   }
   verify(msg) {
-    console.log('EDAuth::verify::msg=<',msg,'>');
+    //console.log('EDAuth::verify::msg=<',msg,'>');
     if(!msg.token.startsWith('W')) {
       return false;
     }
