@@ -53,7 +53,7 @@ const navbarTemplate =
       </li>
       <li class="nav-item active" v-if="isAuthed === false">
         <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/signin" role="button">
-          <i class="material-icons md-48">person</i>
+          <i class="material-icons md-48">login</i>
         </a>
       </li>
       <li class="nav-item active" v-if="isAuthed === false ">
@@ -63,7 +63,12 @@ const navbarTemplate =
       </li>
       <li class="nav-item active" v-if="isAuthed === true">
         <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/profile" role="button">
-          <i class="material-icons md-48">person</i>
+          <i class="material-icons md-48">account_circle</i>
+        </a>
+      </li>
+      <li class="nav-item active" v-if="isAuthed === true">
+        <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/signout" role="button">
+          <i class="material-icons md-48">clear</i>
         </a>
       </li>
     </ul>
