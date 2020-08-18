@@ -18,16 +18,29 @@ class WatorWss {
       self.onMessageWSS(evt);
     });    
   }
-  onOpenWSS = (evt)=> {
-    console.log('onOpenWSS:: evt=<', evt,'>');
-  };
-  onCloseWSS = (evt)=> {
-    console.log('onCloseWSS:: evt=<', evt,'>');
-  };
-  onErrorWSS = (evt)=> {
-    console.log('onErrorWSS:: evt=<', evt,'>');
-  };
-  sendMsg = (msg) => {
+  sendMsg (msg){
     this.socket.send(JSON.stringify(msg));
   }
+
+  onOpenWSS(evt) {
+    console.log('WatorWss::onOpenWSS: evt=<', evt,'>');
+  };
+  onCloseWSS (evt) {
+    console.log('WatorWss::onCloseWSS: evt=<', evt,'>');
+  };
+  onErrorWSS (evt) {
+    console.log('WatorWss::onErrorWSS: evt=<', evt,'>');
+  };
+  onMessageWSS(evt) {
+    //console.log('WatorWss::onMessageWSS: evt.data=<', evt.data,'>');
+    try {
+      const jData = JSON.parse(evt.data);
+      //console.log('WatorWss::onMessageWSS: jData=<', jData,'>');
+      if(typeof this.onMsg === 'function') {
+        this.onMsg(jData);
+      }
+    } catch(err) {
+      console.error('WatorWss::onMessageWSS: err=<', err,'>');
+    }
+  } 
 }

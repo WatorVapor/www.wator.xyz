@@ -24,3 +24,7 @@ const onUIClickSignin = (elem) => {
   //console.log('onUIClickSignin::tokenMsg=<',tokenMsg,'>');
   wss.sendMsg(tokenMsg);
 }
+
+wss.onMsg = (msg)=> {
+  console.log('wss.onMsg::msg=<',msg,'>');
+}
