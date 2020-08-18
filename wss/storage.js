@@ -40,7 +40,7 @@ module.exports = class MongoStorage {
       const profile = await this.profile_.findOne(condition,options);
       //console.log('MongoStorage::fetchToken:profile=<', profile,'>');
       if(profile) {
-        signup.payload.profile = profile;
+        signup._profile = profile;
       }
       cb(signup);
     } else {

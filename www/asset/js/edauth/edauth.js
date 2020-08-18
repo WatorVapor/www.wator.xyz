@@ -1,5 +1,6 @@
 const keyConstOfLocalStorage = 'wator/edauth/keypair';
 const strConstTokenPrefix = 'W';
+const constEDAuthSigninKey = 'edauth/signin/profile';
 
 class EDAuth {
   constructor() {
@@ -25,6 +26,20 @@ class EDAuth {
     const keyPair = JSON.parse(localStorage.getItem(keyConstOfLocalStorage));
     //console.log('EDAuth::getPublicKey::keyPair=<',keyPair,'>');
     return keyPair.publicKey;
+  }
+  saveSignin(msg) {
+    sessionStorage.setItem(constEDAuthSigninKey, JSON.stringify(msg));
+  }
+  isAuthed() {
+    const signin = sessionStorage.getItem(constEDAuthSigninKey);
+    if(signin) {
+      const jSignin = JSON.parse(signin);
+      //console.log('EDAuth::isAuthed::jSignin=<',jSignin,'>');
+      const isGoodMsg = this.verifyStoraged_(jSignin);
+      //console.log('EDAuth::isAuthed::isGoodMsg=<',isGoodMsg,'>');
+      return isGoodMsg;
+    }
+    return false
   }
 
   sign(msg) {
@@ -83,6 +98,10 @@ class EDAuth {
 
   calcTokenKey_ (publicKey) {
     const bs64Public = nacl.util.encodeBase64(publicKey);
+    return this.calcTokenKeyBS64_(bs64Public);
+  }
+
+  calcTokenKeyBS64_ (bs64Public) {
     //console.log('calcTokenKey_::bs64Public=<',bs64Public,'>');
     const hashPublic = CryptoJS.SHA3(bs64Public, { outputLength: 512 }).toString(CryptoJS.enc.Base64);
     //console.log('calcTokenKey_::hashPublic=<',hashPublic,'>');
@@ -93,6 +112,45 @@ class EDAuth {
     //console.log('calcTokenKey_::tokenKey=<',tokenKey,'>');
     return tokenKey;
   }
+
+  verifyStoraged_(msg) {
+    //console.log('EDAuth::verifyStoraged_::msg=<',msg,'>');
+    if(!msg.token.startsWith('W')) {
+      return false;
+    }
+    const calcToken = this.calcTokenKeyBS64_(msg.auth.key);
+    //console.log('EDAuth::verifyStoraged_::calcToken=<',calcToken,'>');
+    if(calcToken !== msg.token) {
+      return false;
+    }
+    const publicKey = nacl.util.decodeBase64(msg.auth.key);
+    const signMsg = nacl.util.decodeBase64(msg.auth.sign);
+    //console.log('EDAuth::verifyStoraged_::publicKey=<',publicKey,'>');
+    //console.log('EDAuth::verifyStoraged_::signMsg=<',signMsg,'>');
+    const orignal = nacl.sign.open(signMsg,publicKey);
+    if(!orignal) {
+      console.log('EDAuth::verifyStoraged_::orignal=<',orignal,'>');
+      return false;
+    }
+    const orignalB64 = nacl.util.encodeBase64(orignal);
+    //console.log('EDAuth::verifyStoraged_::orignalB64=<',orignalB64,'>');
+    const msgCal = Object.assign({},msg);
+    delete msgCal.auth;
+    delete msgCal._id;
+    delete msgCal._at;
+    delete msgCal._profile;
+    const toCalSHA3 = CryptoJS.SHA3(JSON.stringify(msgCal), { outputLength: 512  }).toString(CryptoJS.enc.Base64);
+    const toCalRIPEMD160 = CryptoJS.RIPEMD160(toCalSHA3).toString(CryptoJS.enc.Base64);
+    //console.log('EDAuth::verifyStoraged_::toCalRIPEMD160=<',toCalRIPEMD160,'>');
+    if(orignalB64 === toCalRIPEMD160) {
+      return true;
+    } else {
+      console.log('EDAuth::verifyStoraged_::orignalB64=<',orignalB64,'>');
+      console.log('EDAuth::verifyStoraged_::toCalRIPEMD160=<',toCalRIPEMD160,'>');
+    }
+    return false;
+  }
+
 }
 
 

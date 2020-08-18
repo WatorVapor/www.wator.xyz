@@ -21,7 +21,7 @@ const navbarTemplate =
         <div class="dropdown-menu" aria-labelledby="navbarDropdownLang">
           <div class="row ml-2">
             <div class="col">
-              <a class="" href="/ermu"><i class="material-icons md-48">search</i></a>
+              <a class="" href="/ermu"><i class="material-icons md-48" target="_blank">search</i></a>
             </div>
             <div class="col">
             </div>
@@ -51,14 +51,19 @@ const navbarTemplate =
           </div>
         </div>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" v-if="isAuthed === false">
         <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/signin" role="button">
           <i class="material-icons md-48">person</i>
         </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" v-if="isAuthed === false ">
         <a role="button" class="btn btn-warning btn-lg" href="/edauth/signup" role="button">
           <i class="material-icons md-48">person_add</i>
+        </a>
+      </li>
+      <li class="nav-item active" v-if="isAuthed === true">
+        <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/profile" role="button">
+          <i class="material-icons md-48">person</i>
         </a>
       </li>
     </ul>
@@ -66,13 +71,22 @@ const navbarTemplate =
 `
 
 Vue.component('w-navbar', {
-  template: navbarTemplate
+  template: navbarTemplate,
+  data: ()=>{
+    const edauth = new EDAuth();
+    const isAuthed = edauth.isAuthed();
+    console.log('w-navbar::isAuthed=<',isAuthed,'>');
+    return {
+      isAuthed:isAuthed
+    };
+  }
 });
 
 $(document).ready( () => {
   const topNaveBar = new Vue({
     el: '#vue-navbar-top'
   });
+  console.log('w-navbar::topNaveBar=<',topNaveBar,'>');
 });
 
 $(function () {
