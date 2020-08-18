@@ -32,12 +32,6 @@ const heartBeatWS = () => {
 }
 const doPingWS = () => {
   wss.clients.forEach((ws) => {
-    /*
-    if (ws.isAlive === false) {
-      console.log('heartBeatWS::ws.isAlive=<',ws.isAlive,'>');
-      return ws.terminate();
-    }
-    */
     ws.isAlive = false;
     ws.ping(noop);
   });  
@@ -67,6 +61,10 @@ const onWSMsg = (message,ws) => {
 const KVFolder = require('./KVFolder.js');
 const strConstAccoutPath = '/storage/master/accout/accout.www.wator.xyz/accout';
 const kvAccount = new KVFolder(strConstAccoutPath);
+
+const MongoStorage = require('./storage.js');
+const mongo = new MongoStorage();
+
 const onGoodAuthMsg = (payload,token) => {
   console.log('onGoodAuthMsg: payload=<', payload,'>');
   console.log('onGoodAuthMsg: token=<', token,'>');
