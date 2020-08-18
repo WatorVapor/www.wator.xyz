@@ -30,6 +30,10 @@ class EDAuth {
   saveSignin(msg) {
     sessionStorage.setItem(constEDAuthSigninKey, JSON.stringify(msg));
   }
+  removeSignin(msg) {
+    sessionStorage.removeItem(constEDAuthSigninKey);
+  }
+
   isAuthed() {
     const signin = sessionStorage.getItem(constEDAuthSigninKey);
     if(signin) {
