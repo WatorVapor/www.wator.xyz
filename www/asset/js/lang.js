@@ -10,10 +10,20 @@ $(document).ready( async () => {
   const dataPromise = import(langURL);
   const langModule = await dataPromise;
   //console.log('::langModule.data=<',langModule.data,'>');
+  /*
   const topLanguage = new Vue({
     el: '#vue-lang-top',
     data: langModule.data
   });
   //console.log('::topLanguage=<',topLanguage,'>');
+  */
+  
+  const langElem = document.querySelectorAll('.vue-lang');
+  langElem.forEach((el, i) => {
+    new Vue({
+      el: el,
+      data: langModule.data
+    });  
+  });
 });
 

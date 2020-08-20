@@ -30,6 +30,11 @@ module.exports = class MongoStorage {
     msg._at = (new Date()).toISOString();
     this.signin_.insertOne(msg);    
   }
+  saveProfile(msg) {
+    //console.log('MongoStorage::saveProfile:msg=<', msg,'>');
+    msg._at = (new Date()).toISOString();
+    this.profile_.insertOne(msg);    
+  }
   async fetchToken(token,cb) {
     //console.log('MongoStorage::fetchToken:token=<', token,'>');
     const condition = { token: token};

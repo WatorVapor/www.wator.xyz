@@ -1,6 +1,6 @@
 const keyConstOfLocalStorage = 'wator/edauth/keypair';
 const strConstTokenPrefix = 'W';
-const constEDAuthSigninKey = 'edauth/signin/profile';
+const constEDAuthSigninKey = 'wator/edauth/signin_profile';
 
 class EDAuth {
   constructor() {
@@ -32,6 +32,17 @@ class EDAuth {
   }
   removeSignin(msg) {
     sessionStorage.removeItem(constEDAuthSigninKey);
+  }
+  getProfile() {
+    const signin = JSON.parse(sessionStorage.getItem(constEDAuthSigninKey));
+    if(signin._profile) {
+      return signin._profile.payload;
+    } else if( signin.payload && signin.payload.act === 'signup' && signin.payload.profile) {
+      return signin.payload.profile;
+    } else {
+      console.log('EDAuth::getProfile::signin=<',signin,'>');
+    }
+    return {};
   }
 
   isAuthed() {
@@ -118,6 +129,12 @@ class EDAuth {
   }
 
   verifyStoraged_(msg) {
+    if(msg._profile) {
+      const goodProfile = this.verifyStoraged_(msg._profile);
+      if(!goodProfile) {
+        return false;
+      }
+    }
     //console.log('EDAuth::verifyStoraged_::msg=<',msg,'>');
     if(!msg.token.startsWith('W')) {
       return false;

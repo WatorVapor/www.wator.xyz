@@ -64,6 +64,7 @@ const navbarTemplate =
       <li class="nav-item active" v-if="isAuthed === true">
         <a role="button" class="btn btn-warning btn-lg mr-lg-5" href="/edauth/profile" role="button">
           <i class="material-icons md-48">account_circle</i>
+          <span class="badge badge-success">{{ name }}</spam>
         </a>
       </li>
       <li class="nav-item active" v-if="isAuthed === true">
@@ -81,8 +82,11 @@ Vue.component('w-navbar', {
     const edauth = new EDAuth();
     const isAuthed = edauth.isAuthed();
     console.log('w-navbar::isAuthed=<',isAuthed,'>');
+    const profile = edauth.getProfile();
+    console.log('w-navbar::profile=<',profile,'>');
     return {
-      isAuthed:isAuthed
+      isAuthed:isAuthed,
+      name:profile.name
     };
   }
 });

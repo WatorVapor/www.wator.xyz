@@ -73,6 +73,8 @@ const onGoodAuthMsg = (jsonMsg,ws) => {
       mongo.fetchToken(jsonMsg.token,(profile)=> {
        onGoodAccount(profile,ws);
       });
+    } else if(payload.act === 'profile') {
+      mongo.saveProfile(jsonMsg);
     } else {
       console.log('onGoodAuthMsg: payload=<', payload,'>');
     }
