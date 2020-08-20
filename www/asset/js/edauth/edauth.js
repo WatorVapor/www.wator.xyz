@@ -35,12 +35,14 @@ class EDAuth {
   }
   getProfile() {
     const signin = JSON.parse(sessionStorage.getItem(constEDAuthSigninKey));
-    if(signin._profile) {
-      return signin._profile.payload;
-    } else if( signin.payload && signin.payload.act === 'signup' && signin.payload.profile) {
-      return signin.payload.profile;
-    } else {
-      console.log('EDAuth::getProfile::signin=<',signin,'>');
+    if(signin) {
+      if(signin._profile) {
+        return signin._profile.payload;
+      } else if( signin.payload && signin.payload.act === 'signup' && signin.payload.profile) {
+        return signin.payload.profile;
+      } else {
+        console.log('EDAuth::getProfile::signin=<',signin,'>');
+      }
     }
     return {};
   }
