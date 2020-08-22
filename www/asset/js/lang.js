@@ -1,5 +1,5 @@
 const constKeyLanguangeCode = 'lang_code';
-$(document).ready( async () => {
+document.addEventListener('DOMContentLoaded', async (evt) => {
   let lang = localStorage.getItem(constKeyLanguangeCode);
   if(!lang) {
     lang = 'cn';
@@ -7,17 +7,9 @@ $(document).ready( async () => {
   //console.log('::lang=<',lang,'>');
   const langURL = `${location.pathname}lang_${lang}.js`;
   //console.log('::langURL=<',langURL,'>');
-  const dataPromise = import(langURL);
-  const langModule = await dataPromise;
+  const langPromise = import(langURL);
+  const langModule = await langPromise;
   //console.log('::langModule.data=<',langModule.data,'>');
-  /*
-  const topLanguage = new Vue({
-    el: '#vue-lang-top',
-    data: langModule.data
-  });
-  //console.log('::topLanguage=<',topLanguage,'>');
-  */
-  
   const langElem = document.querySelectorAll('.vue-lang');
   langElem.forEach((el, i) => {
     new Vue({
@@ -26,4 +18,3 @@ $(document).ready( async () => {
     });  
   });
 });
-
