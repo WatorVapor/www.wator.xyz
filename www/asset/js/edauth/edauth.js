@@ -46,6 +46,26 @@ class EDAuth {
     }
     return {};
   }
+  importSecret(secretKeyBs64) {
+    const secretKey = nacl.util.decodeBase64(secretKeyBs64);
+    //console.log('EDAuth::importSecret::secretKey=<',secretKey,'>');
+    const keyPairObj = nacl.sign.keyPair.fromSecretKey(secretKey);
+    //console.log('EDAuth::sign::keyPairObj=<',keyPairObj,'>');
+    const tokenCalc = this.calcTokenKey_(keyPairObj.publicKey);
+    if(tokenCalc.startsWith(strConstTokenPrefix)) {
+      const bs64Public = nacl.util.encodeBase64(keyPairObj.publicKey);
+      //console.log('EDAuth::createGoodKey_::bs64Public=<',bs64Public,'>');
+      const keyToSave = {
+        publicKey:bs64Public,
+        secretKey:secretKeyBs64,
+        tokenKey:tokenCalc
+      };
+      localStorage.setItem(keyConstOfLocalStorage,JSON.stringify(keyToSave));
+      return tokenCalc
+    } {
+      return 'invalid!!!'
+    }
+  }
 
   isAuthed() {
     const signin = sessionStorage.getItem(constEDAuthSigninKey);
