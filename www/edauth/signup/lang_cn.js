@@ -1,5 +1,5 @@
 export const data = {
-  keyImport:'从已存在密钥导入账号',
+  keyImport:'导入已存在账号',
   agreements:[
     '1.你是机器人或人工智能。',
     '2.你是机器人或人工智能的朋友。',
@@ -7,19 +7,20 @@ export const data = {
     '4.你不要填写个人隐私。',
   ],
   agreebtn:{
-    yes:'同意，创建新密钥',
+    yes:'同意，创建新账号',
     no:'不同意，谢了'
   },
   keyProgress:'正在孵化密钥，请稍等...',
   warning:`
-  这个密钥非常重要，如果丢失将无法登录这个网站。
-  这个密钥仅仅被存储在浏览器的本地临时区域，清理网页履历等行为都会丢失。
+  本密钥非常重要，是基于ED25519算法生成，具有高度的安全性。
+  它是登录本网站的唯一凭证。如果丢失，将无法登录这个网站。
+  本密钥仅仅被存储在浏览器的本地临时区域，清理网页履历等行为都会丢失。
   请下载成文件，妥善保存。`,
   saveAsText:'保存为文本文件',
   saveAsQRcode:'保存为二维码',
   copyToClipboard:'复制到剪贴板',  
-  tokenlabel:'账户令牌:',
-  namelabel:'账户名字:',
-  uploadAccount:'上传登录信息',  
+  tokenlabel:'账号令牌:',
+  namelabel:'账号名字:',
+  uploadAccount:'上传注册信息',  
   nextstep:'下一步',
 }
