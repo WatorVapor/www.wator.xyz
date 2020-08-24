@@ -51,7 +51,7 @@
           <div class="form-group row">
             <div class="col-sm-3 offset-sm-9">
               <button class="btn btn-success" onclick="onUIClickUploadAccount(this)">
-                <span>{{ uploadeAccount }}</span><i class="material-icons "style="color:green;">done</i>
+                <span>{{ uploadAccount }}</span><i class="material-icons "style="color:green;">done</i>
               </button>
             </div>
           </div>
@@ -68,9 +68,9 @@
         <div class="col-md-8 bg-warning">
           <pre id="noticeBox" class="text-left text-danger ">{{ warning }}</pre>
           <div class="mainbox center-block text-center  mb-3">
-            <a id="signup-download-qrcode" type="button" download="wator.signup.ed25519.key.qrcode.png" class="btn btn-primary">{{ downloadQRcodebtn }}</a>
-            <a id="signup-download" type="button" download="wator.signup.ed25519.key.json" class="btn btn-primary">{{ downloadbtn }}</a>
-            <button type="button" class="btn btn-success btn-clipboard" data-clipboard-target="#signup-secretKey">{{ clipboardbtn }}</button>
+            <a id="signup-download-qrcode" type="button" download="wator.signup.ed25519.key.qrcode.png" class="btn btn-primary">{{ saveAsQRcode }}</a>
+            <a id="signup-download" type="button" download="wator.signup.ed25519.key.json" class="btn btn-primary">{{ saveAsText }}</a>
+            <button type="button" class="btn btn-success btn-clipboard" data-clipboard-target="#signup-secretKey">{{ copyToClipboard }}</button>
           </div>
         </div>
       </div>

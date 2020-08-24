@@ -17,9 +17,11 @@ export const data = {
    and actions such as cleaning the web page history will be lost.
    Please download it as a file and save it properly.
    `,
-  downloadbtn:'Save as file',
-  downloadQRcodebtn:'下载二维码',
-  clipboardbtn:'Copy to clipboard',  
+  saveAsText:'Save as file',
+  saveAsQRcode:'Save As QR code',
+  copyToClipboard:'Copy to clipboard',  
   tokenlabel:'Account token',
+  namelabel:'Account name:',
+  uploadAccount:'Upload',  
   nextstep:'Next step'
 }

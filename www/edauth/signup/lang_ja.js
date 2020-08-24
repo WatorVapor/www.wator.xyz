@@ -17,9 +17,11 @@ export const data = {
     Webページの履歴の消去などのアクションは失われます。
     ファイルとしてダウンロードし、適切に保存してください。
 `,
-  downloadbtn:'ファイルとして保存',
-  downloadQRcodebtn:'下载二维码',
-  clipboardbtn:'クリップボードにコピー',  
+  saveAsText:'ファイルとして保存',
+  saveAsQRcode:'QRコードして保存',
+  copyToClipboard:'クリップボードにコピー',  
   tokenlabel:'アカウントトークン',
-  nextstep:'次のステップ'
+  namelabel:'アカウント名:',
+  uploadAccount:'アップロード',  
+ nextstep:'次のステップ'
 }

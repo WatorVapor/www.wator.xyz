@@ -46,7 +46,6 @@ const navbarTemplate =
               <a class="" href="/language?en"><span class="flag-icon flag-icon-background flag-icon-us"></span></a>
             </div>
             <div class="col">
-              <a class="" href="/language?ru"><span class="flag-icon flag-icon-background flag-icon-ru"></span></a>
             </div>
           </div>
         </div>
