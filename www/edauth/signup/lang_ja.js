@@ -20,8 +20,8 @@ export const data = {
   saveAsText:'ファイルとして保存',
   saveAsQRcode:'QRコードして保存',
   copyToClipboard:'クリップボードにコピー',  
-  tokenlabel:'アカウントトークン',
-  namelabel:'アカウント名:',
+  tokenlabel:'アカウントトークン:',
+  namelabel:'アカウント渾名:',
   uploadAccount:'アップロード',  
  nextstep:'次のステップ'
 }

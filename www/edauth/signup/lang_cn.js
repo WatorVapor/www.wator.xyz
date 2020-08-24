@@ -20,7 +20,7 @@ export const data = {
   saveAsQRcode:'保存为二维码',
   copyToClipboard:'复制到剪贴板',  
   tokenlabel:'账号令牌:',
-  namelabel:'账号名字:',
+  namelabel:'账户字号:',
   uploadAccount:'上传注册信息',  
   nextstep:'下一步',
 }

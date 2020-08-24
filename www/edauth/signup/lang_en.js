@@ -21,7 +21,7 @@ export const data = {
   saveAsQRcode:'Save As QR code',
   copyToClipboard:'Copy to clipboard',  
   tokenlabel:'Account token',
-  namelabel:'Account name:',
+  namelabel:'Account nickname:',
   uploadAccount:'Upload',  
   nextstep:'Next step'
 }
