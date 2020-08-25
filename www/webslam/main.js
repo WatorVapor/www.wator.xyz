@@ -32,7 +32,7 @@ const Layer1 = {
   }
 };
 
-const iConstFilterOut = 8;
+const iConstFilterOut = 16;
 
 const forward = (layer,mat) => {
   console.log('forward:layer:=<',layer,'>');
@@ -42,23 +42,49 @@ const forward = (layer,mat) => {
   console.log('forward::mat.channels:=<',mat.channels(),'>');
   console.log('forward::mat.type:=<',mat.type(),'>');
   /// grid
-  const allVals = []
+  const allVals = {R:[],G:[],B:[]};
   for(let col = 0;col < mat.cols - layer.grid.x; col += layer.grid.x) {
     for(let row = 0;row < mat.rows - layer.grid.y; row += layer.grid.y) {
       //console.log('forward::col:=<',col,'>');
       //console.log('forward::row:=<',row,'>');
       const mixVal = onGridData(layer,mat,col,row);
-      allVals.push({v:mixVal,r:row,c:col});
+      allVals.R.push({v:mixVal.R,r:row,c:col});
+      allVals.G.push({v:mixVal.G,r:row,c:col});
+      allVals.B.push({v:mixVal.B,r:row,c:col});
     }
   }
   //onLoadStats(allVals);
-  
-  allVals.sort((a,b)=>{ return b.v - a.v;});
-  //console.log('forward::allVals:=<',allVals,'>');
-  const end = allVals.length/iConstFilterOut;
-  const outVals = allVals.slice(0,end);
+  showOutData(allVals.R,mat,layer,'img_output_r',0);
+  showOutData(allVals.G,mat,layer,'img_output_g',1);
+  showOutData(allVals.B,mat,layer,'img_output_b',2);
+}
+
+
+
+const onGridData = (layer,mat,col,row) => {
+  const  fVal = {R:0.0,G:00,B:0.0};
+  for(let rowI = 0;rowI < layer.grid.y;rowI++) {
+    for(let colI = 0;colI < layer.grid.x;colI++) {
+      const R = mat.ucharAt(row + rowI, (col +colI) * mat.channels());
+      const G = mat.ucharAt(row + rowI, (col +colI) * mat.channels() +1);
+      const B = mat.ucharAt(row + rowI, (col +colI) * mat.channels() +2);
+      const A = mat.ucharAt(row + rowI, (col +colI) * mat.channels() +3);
+      const wIndex = rowI * layer.grid.x + colI;
+      fVal.R += R * layer.weight.filter1[wIndex];;
+      fVal.G += G * layer.weight.filter1[wIndex];;
+      fVal.B += B * layer.weight.filter1[wIndex];;
+    }
+  }
+  return fVal;
+}
+
+const showOutData = (outChannelVals,mat,layer,elemId,channel) => {
+  outChannelVals.sort((a,b)=>{ return b.v - a.v;});
+  //console.log('forward::outChannelVals:=<',outChannelVals,'>');
+  const end = outChannelVals.length/iConstFilterOut;
+  const outVals = outChannelVals.slice(0,end);
   //console.log('forward::outVals:=<',outVals,'>');
-  let matOut = new cv.Mat.zeros(mat.rows/3,mat.cols/3, mat.type());
+  let matOut = new cv.Mat.zeros(mat.rows/layer.grid.y,mat.cols/layer.grid.x, mat.type());
 //  console.log('forward::matOut:=<',matOut,'>');
 
 
@@ -68,18 +94,30 @@ const forward = (layer,mat) => {
     //console.log('forward::pixel:=<',pixel,'>');
     const row = value.r/layer.grid.y;
     const col = value.c/layer.grid.x;
-    matOut.ucharPtr(row, col)[0] = 254;
-    matOut.ucharPtr(row, col)[1] = 0;
-    matOut.ucharPtr(row, col)[2] = 0;
+    if(channel === 0) {
+      matOut.ucharPtr(row, col)[0] = 254;
+      matOut.ucharPtr(row, col)[1] = 0;
+      matOut.ucharPtr(row, col)[2] = 0;
+    }
+    if(channel === 1) {
+      matOut.ucharPtr(row, col)[0] = 0;
+      matOut.ucharPtr(row, col)[1] = 254;
+      matOut.ucharPtr(row, col)[2] = 0;
+    }
+    if(channel === 2) {
+      matOut.ucharPtr(row, col)[0] = 0;
+      matOut.ucharPtr(row, col)[1] = 0;
+      matOut.ucharPtr(row, col)[2] = 254;
+    }
     matOut.ucharPtr(row, col)[3] = 254;
     //console.log('forward:: matOut.ucharPtr(value.r, value.c):=<', matOut.ucharPtr(value.r, value.c),'>');
   }
-  const outElement = document.getElementById('img_output');
+  const outElement = document.getElementById(elemId);
   cv.imshow(outElement, matOut);
 
-  const start = allVals.length - allVals.length/iConstFilterOut;
-  const outValsB = allVals.slice(start);
-  let matOutB = new cv.Mat.zeros(mat.rows/3,mat.cols/3, mat.type());
+  const start = outChannelVals.length - outChannelVals.length/iConstFilterOut;
+  const outValsB = outChannelVals.slice(start);
+  let matOutB = new cv.Mat.zeros(mat.rows/layer.grid.y,mat.cols/layer.grid.x, mat.type());
 //  console.log('forward::matOutB:=<',matOutB,'>');
 
   for(const value of outValsB) {
@@ -87,49 +125,28 @@ const forward = (layer,mat) => {
     //console.log('forward::pixel:=<',pixel,'>');
     const row = value.r/layer.grid.y;
     const col = value.c/layer.grid.x;
-    matOutB.ucharPtr(row, col)[0] = 254;
-    matOutB.ucharPtr(row, col)[1] = 0;
-    matOutB.ucharPtr(row, col)[2] = 0;
+    if(channel === 0) {
+      matOutB.ucharPtr(row, col)[0] = 254;
+      matOutB.ucharPtr(row, col)[1] = 0;
+      matOutB.ucharPtr(row, col)[2] = 0;
+    }
+    if(channel === 1) {
+      matOutB.ucharPtr(row, col)[0] = 0;
+      matOutB.ucharPtr(row, col)[1] = 254;
+      matOutB.ucharPtr(row, col)[2] = 0;
+    }
+    if(channel === 2) {
+      matOutB.ucharPtr(row, col)[0] = 0;
+      matOutB.ucharPtr(row, col)[1] = 0;
+      matOutB.ucharPtr(row, col)[2] = 254;
+    }
     matOutB.ucharPtr(row, col)[3] = 254;
     //console.log('forward:: matOutB.ucharPtr(value.r, value.c):=<', matOutB.ucharPtr(value.r, value.c),'>');
   }
-  const outElementB = document.getElementById('img_output_b');
-  cv.imshow(outElementB, matOutB);
+  const outElementB = document.getElementById(elemId + '_l');
+  cv.imshow(outElementB, matOutB);  
+};
 
-}
-
-const onGridData = (layer,mat,col,row) => {
-  let R11 = mat.ucharAt(row, col * mat.channels());
-  //console.log('forward::R11:=<',R11,'>');
-  let R12 = mat.ucharAt(row, (col+1) * mat.channels());
-  //console.log('forward::R12:=<',R12,'>');
-  let R13 = mat.ucharAt(row, (col+2) * mat.channels());
-  //console.log('forward::R13:=<',R13,'>');
-  let R21 = mat.ucharAt(row+1, col * mat.channels());
-  //console.log('forward::R21:=<',R21,'>');
-  let R22 = mat.ucharAt(row+1, (col+1) * mat.channels());
-  //console.log('forward::R22:=<',R22,'>');
-  let R23 = mat.ucharAt(row+1, (col+2) * mat.channels());
-  //console.log('forward::R23:=<',R23,'>');
-  let R31 = mat.ucharAt(row+2, col * mat.channels());
-  //console.log('forward::R31:=<',R31,'>');
-  let R32 = mat.ucharAt(row+2, (col+1) * mat.channels());
-  //console.log('forward::R32:=<',R32,'>');
-  let R33 = mat.ucharAt(row+2, (col+2) * mat.channels());
-  //console.log('forward::R33:=<',R33,'>');
-  let fVal1 = 0.0;
-  fVal1 += R11 * layer.weight.filter1[0];
-  fVal1 += R12 * layer.weight.filter1[1];
-  fVal1 += R13 * layer.weight.filter1[2];
-  fVal1 += R21 * layer.weight.filter1[3];
-  fVal1 += R22 * layer.weight.filter1[4];
-  fVal1 += R23 * layer.weight.filter1[5];
-  fVal1 += R31 * layer.weight.filter1[6];
-  fVal1 += R32 * layer.weight.filter1[7];
-  fVal1 += R33 * layer.weight.filter1[8];
-  //console.log('forward::fVal1:=<',fVal1,'>');
-  return fVal1;
-}
 
 const onLoadStats = (data) => {
   const ctx = document.getElementById('canvas').getContext('2d');
