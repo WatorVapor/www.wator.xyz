@@ -18,23 +18,6 @@ services:
         reservations:
           cpus: '0.1'
           memory: 32M
-  wss:
-    image: node:lts
-    volumes:
-      - ../wss:/opt/wss
-      - /tmp/wator/:/tmp/wator/
-    working_dir: "/opt/wss"
-    command: node ./index.js
-    networks:
-      - outside
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 32M
-        reservations:
-          cpus: '0.1'
-          memory: 16M
 networks:
   outside:
     external:
