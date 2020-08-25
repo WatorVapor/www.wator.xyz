@@ -7,7 +7,7 @@ services:
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
       - /watorvapor/cert:/etc/cert
       - /watorvapor/log/nginx:/log
-      - /tmp/wator/:/tmp/wator/
+      - /tmp/wator/wss:/tmp/wator/wss
     networks:
       - outside
     deploy:
