@@ -42,8 +42,32 @@
         </div>
       </div>
     </div>
-    <hr/>
-
+    <div class="container d-none mb-3" id="vue-ui-app-pages-nav-result">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group">
+              <button type="button" class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchPrevPage(this)">
+                <i class="material-icons">keyboard_arrow_left</i>
+              </button>
+            </div>
+            <div class="btn-group mr-2" role="group" v-for="page in pages">
+              <button class="btn btn-outline-primary btn-sm" type="button" onclick="uiOnClickSearchGoToPage(this)">
+                <span class="badge badge-success bg-danger" v-if="page.isView === true">{{page.number}}</span>
+                <span class="badge badge-success" v-if="page.isView === false">{{page.number}}</span>
+              </button>
+            </div>
+            <div class="btn-group mr-2" role="group">
+              <button type="button" class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchNextPage(this)">
+                <i class="material-icons">keyboard_arrow_right</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <hr/>
+   
     <div class="container d-none" id="vue-ui-app-rows-result-frame">
       <div class="row justify-content-center border border-secondary rounded rounded-lg mb-3" v-for="rowResultCID in searchResultCIDRows">
         <div class="col-1" v-bind:id="rowResultCID.spinner">
@@ -67,35 +91,9 @@
       </div>
     </div>    
 
-    
-    <hr/>
-    <div class="container d-none mb-3" id="vue-ui-app-pages-nav-result">
-      <div class="row justify-content-center">
-        <div class="col-10">
-          <div class="btn-group" role="group">
-            <div class="btn-group mr-2" role="group">
-              <button type="button" class="btn btn-outline-primary" onclick="uiOnClickSearchPrevPage(this)">
-                <i class="material-icons">keyboard_arrow_left</i>
-              </button>
-            </div>
-            <div class="btn-group mr-2" role="group" v-for="page in pages">
-              <button class="btn btn-outline-primary" type="button" onclick="uiOnClickSearchGoToPage(this)">
-                <span class="badge badge-success bg-danger" v-if="page.isView === true">{{page.number}}</span>
-                <span class="badge badge-success" v-if="page.isView === false">{{page.number}}</span>
-              </button>
-            </div>
-            <div class="btn-group mr-2" role="group">
-              <button type="button" class="btn btn-outline-primary" onclick="uiOnClickSearchNextPage(this)">
-                <i class="material-icons">keyboard_arrow_right</i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <hr/>
     
-    <div class="container fixed-bottom">
+    <div class="container-fluid fixed-bottom">
       <div class="row justify-content-center">
         <div class="col-6 text-left pl-5">
           <a  href="/"><h5 class="overflow-hidden">Wator</h5></a>          
