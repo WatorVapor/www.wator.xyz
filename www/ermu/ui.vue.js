@@ -30,11 +30,11 @@ const onShowStatsResultApp = (msg) =>{
     gResultPages[gCurrentViewPageIndex].isView = true;
   }
   //console.log('ui.vue::onShowStatsResultApp gCurrentViewPageIndex=<', gCurrentViewPageIndex,'>');
-  let startOffset = gCurrentViewPageIndex-2;
+  let startOffset = gCurrentViewPageIndex-4;
   if(startOffset < 0) {
     startOffset = 0;
   }
-  gShowResultsPages = gResultPages.slice(startOffset, startOffset + 5);
+  gShowResultsPages = gResultPages.slice(startOffset, startOffset + 10);
   //console.log('ui.vue::onShowStatsResultApp gShowResultsPages=<', gShowResultsPages,'>');
   gTotalPage = parseInt(msg.total);
   //console.log('ui.vue::onShowStatsResultApp gTotalPage=<', gTotalPage,'>');

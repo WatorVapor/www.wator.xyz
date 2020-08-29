@@ -45,20 +45,20 @@
     <div class="container d-none mb-3" id="vue-ui-app-pages-nav-result">
       <div class="row justify-content-center">
         <div class="col-12">
-          <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-toolbar mb-2 ml-2" role="toolbar">
             <div class="btn-group mr-2" role="group">
               <button type="button" class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchPrevPage(this)">
                 <i class="material-icons">keyboard_arrow_left</i>
               </button>
             </div>
             <div class="btn-group mr-2" role="group" v-for="page in pages">
-              <button class="btn btn-outline-primary btn-sm" type="button" onclick="uiOnClickSearchGoToPage(this)">
+              <button class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchGoToPage(this)">
                 <span class="badge badge-success bg-danger" v-if="page.isView === true">{{page.number}}</span>
                 <span class="badge badge-success" v-if="page.isView === false">{{page.number}}</span>
               </button>
             </div>
             <div class="btn-group mr-2" role="group">
-              <button type="button" class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchNextPage(this)">
+              <button class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchNextPage(this)">
                 <i class="material-icons">keyboard_arrow_right</i>
               </button>
             </div>
@@ -80,7 +80,7 @@
             <p class="text-success font-weight-bold ml-1 mr-1">
               <span class="badge badge-info" v-bind:id="rowResultCID.freq"></span>
             </p>
-            <a v-bind:id="rowResultCID.href">
+            <a class="overflow-hidden" v-bind:id="rowResultCID.href" >
               <h5 class="overflow-hidden" v-bind:id="rowResultCID.title"></h5>
             </a>
           </div>

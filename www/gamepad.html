@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Imporant meta information to make the page as rigid as possible on mobiles, to avoid unintentional zooming on the page itself  -->
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />  
+  <title>Asra Demo Arm</title>
+</head>
+<body>  
+  
+  <div class="container-fluid mt-2">
+    <div class="row justify-content-center">
+      <div class="col-4">
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-block" onclick="uiOnClickConnectBtn(this)">接続</button>
+      </div>
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-secondary btn-block" onclick="uiOnClickJoinOtherAppBtn(this)">他のアプリと連携開始</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt-2">
+    <div class="row justify-content-center">
+
+      <div class="col-8 justify-content-center  bolder border-primary">
+        <div class="row justify-content-center">
+          <div class="col justify-content-center">
+            <video id="rtcvideo" class="w-100" height="480" controls autoplay></video>
+          </div>
+        </div>
+        <hr/>
+        <div class="row  bolder border-primary justify-content-center">
+          <div class="col-4 justify-content-center">
+            <button type="button" class="btn btn-success" onclick="uiOnClickGamepadBtn(this)">ゲームパッド送信開始</button>
+          </div>
+        </div>
+        <div class="row  bolder border-primary justify-content-center">
+          <div class="col-6 justify-content-center" >
+            <span class="badge badge-secondary" id="gamepad-main">---</span>
+          </div>
+          <div class="col-6 justify-content-center" >
+            <span class="badge badge-secondary" id="gamepad-sub">---</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-4 justify-content-center">
+        <div class="row justify-content-center">
+          <div class="col justify-content-center">
+            <canvas id="canvas-arm-3d-model" class="w-100" height="240"></canvas>
+          </div>
+        </div>
+        <div class="row justify-content-center mb-2">
+          <div class="col justify-content-center">
+            <input type="file" id="vwc-motion-script-file" name="script-file" onchange="uiOnChangeLoadScriptBtn(this)">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col justify-content-center">
+            <div id="vwc-motion-editor" style="height:180px"></div>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-1">
+          <div class="col justify-content-center">
+            <button type="button" class="btn btn-success" onclick="uiOnClickSaveScriptBtn(this)">スクリプト保存</button>
+          </div>
+          <div class="col justify-content-center">
+            <button type="button" class="btn btn-primary" onclick="uiOnClickRunScriptBtn(this)">スクリプト実行</button>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tweetnacl/1.0.1/nacl-fast.min.js" integrity="sha256-oirnoViW9lYllRfFCj8bHlWrneMp/XIHg+ct2exOvIc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl-util@0.15.1/nacl-util.min.js" integrity="sha256-l9yVE3YPWsTD48cjI2ABjQo466SAR0oLKj1VzQOlZ1U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha256-6rXZCnFzbyZ685/fMsqoxxZz/QZwMnmwHg+SsNe+C/w=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/base-58@0.0.1/Base58.js" integrity="sha256-d34IQcl2k8MvM/V8g3tBbuqy1cUoJ+G+H4dcDFVisnY=" crossorigin="anonymous"></script>
+  
+    <script type="text/javascript" src="./gamepad.js"></script> 
+    
+</body>
+</html>

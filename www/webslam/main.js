@@ -17,6 +17,8 @@ const f1_ = -1.0;
 
 const f1_8 = 1.0/8.0;
 const f1_8_ = - 1.0/8.0;
+const fl_3x3_1_ = -0.10373443983
+const fl_3x3_2_ = -0.14626556016
 
 const Layer1 = {
   grid:{
@@ -25,14 +27,14 @@ const Layer1 = {
   },
   weight:{
     filter1:[
-     f1_8_,f1_8_,f1_8_,
-     f1_8_,f1,f1_8_,
-     f1_8_,f1_8_,f1_8_
+     fl_3x3_1_, fl_3x3_2_, fl_3x3_1_,
+     fl_3x3_2_, f1,        fl_3x3_2_,
+     fl_3x3_1_, f1_8_,     fl_3x3_1_
     ]
   }
 };
 
-const iConstFilterOut = 16;
+const iConstFilterOut = 8;
 
 const forward = (layer,mat) => {
   console.log('forward:layer:=<',layer,'>');
