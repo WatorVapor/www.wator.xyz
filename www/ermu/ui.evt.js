@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded',(evt) =>{
 });
 
 const onDocumentReadyUI = (evt) =>{
-  console.log('ui.evt::onDocumentReadyUI evt=<', evt,'>');
+  //console.log('ui.evt::onDocumentReadyUI evt=<', evt,'>');
   onShowSearchLastHistory();
 };
 
@@ -23,13 +23,13 @@ const onShowSearchLastHistory = ()=> {
 };
 
 
-const uiOnClickSearchIndex = (evt) => {
-  //console.log('uiOnClickSearchIndex evt=<', evt,'>');
-  //console.log('uiOnClickSearchIndex location.href=<', location.href,'>');
+const uiOnClickJumpToSearch = (evt) => {
+  //console.log('uiOnClickJumpToSearch evt=<', evt,'>');
+  //console.log('uiOnClickJumpToSearch location.href=<', location.href,'>');
   const text = evt.parentElement.parentElement.getElementsByTagName('input')[0].value.trim();
   if(text) {
     const searchHref = location.href + 'search?words=' + text + '&begin=0&end=' + iConstOnePageResult;
-    console.log('uiOnClickSearchIndex searchHref=<', searchHref,'>');
+    //console.log('uiOnClickJumpToSearch searchHref=<', searchHref,'>');
     localStorage.setItem(LocalStorageSearchKeyWordFromIndex,text);
     const searchMsg = { words:text,begin:0,end:iConstOnePageResult};
     localStorage.setItem(LocalStorageHistory,JSON.stringify(searchMsg));
