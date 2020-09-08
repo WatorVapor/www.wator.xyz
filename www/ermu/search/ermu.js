@@ -53,8 +53,8 @@ const parseURLParam =() => {
 }
 
 const parseRoute = () => {
-  //console.log('parseRoute:: window.location.pathname=<', window.location.pathname,'>');
-  if(window.location.pathname.endsWith('search.html')) {
+  console.log('parseRoute:: window.location.pathname=<', window.location.pathname,'>');
+  if(window.location.pathname.endsWith('/search/')) {
     return 'search';
   }
   if(window.location.pathname.endsWith('/ermu/')) {
