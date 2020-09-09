@@ -1,43 +1,134 @@
+const ermu = {};
+document.addEventListener('DOMContentLoaded',(evt) =>{
+  ermu.wss = new ErmuWss();
+});
+
 const iConstOnePageResult = 16;
+const LocalStorageHistory = 'wator/ermu/history';
 
-//console.log(':: location=<', location,'');
-const uri = 'wss://' + location.hostname + '/ermu/wss';
-const socket = new WebSocket(uri);
-socket.addEventListener('open', (event) => {
-  setTimeout(() => {
-    onOpenWSS(event);
-    onPrepareKey();
-  },1);
-});
-socket.addEventListener('close', (event) => {
-  onCloseWSS(event);
-});
-socket.addEventListener('error', (event) => {
-  onErrorWSS(event);
-});
-socket.addEventListener('message', (event) => {
-  onMessageWSS(event);
-});
+class ErmuWss {
+  constructor() {
+    this.createWss_();
+  }
+
+  static getHistory() {
+    const historyStr = localStorage.getItem(LocalStorageHistory);
+    try {
+      const historyJson = JSON.parse(historyStr);
+      //console.log('getHistory_::getHistory historyJson=<', historyJson,'>');
+      return historyJson;
+    } catch(e) {
+      console.log('getHistory_::getHistory e=<', e,'>');
+    }
+    return {};
+  };
+  
+  
+  createWss_() {
+    //console.log(':: location=<', location,'');
+    const uri = 'wss://' + location.hostname + '/ermu/wss';
+    this.socket_ = new WebSocket(uri);
+    const self = this;
+    this.socket_.addEventListener('open', (event) => {
+      setTimeout(() => {
+        self.onOpenWSS_(event);
+        //self.onPrepareKey();
+      },1);
+    });
+    this.socket_.addEventListener('close', (event) => {
+      self.onCloseWSS_(event);
+    });
+    this.socket_.addEventListener('error', (event) => {
+      self.onErrorWSS_(event);
+    });
+    this.socket_.addEventListener('message', (event) => {
+      self.onMessageWSS_(event);
+    });    
+  }
+  
+  onOpenWSS_ (event) {
+    //console.log('onOpenWSS:: event=<', event,'>');
+    const route = parseRoute();
+    console.log('onOpenWSS:: route=<', route,'>');
+    if(route === 'search') {
+      const searchMsg = ErmuWss.getHistory();
+      console.log('onOpenWSS:: searchMsg=<', searchMsg,'>');
+      if(searchMsg.words) {
+        this.startSearchText_(searchMsg);
+      }
+    }
+  };
+  onCloseWSS_(event) {
+    console.log('onCloseWSS_:: event=<', event,'>');
+  };
+  onErrorWSS_(event) {
+    console.log('onErrorWSS_:: event=<', event,'>');
+  };
 
 
-const onOpenWSS = (event)=> {
-  //console.log('onOpenWSS:: event=<', event,'>');
-  const route = parseRoute();
-  console.log('onOpenWSS:: route=<', route,'>');
-  if(route === 'search') {
-    const searchMsg = getHistory();
-    console.log('onOpenWSS:: searchMsg=<', searchMsg,'>');
-    if(searchMsg.words) {
-      startSearchText(searchMsg);
+
+  startSearchText_(searchMsg) {
+    localStorage.setItem(LocalStorageHistory,JSON.stringify(searchMsg));
+    //console.log('onMessageWSS::startSearchText_ searchMsg=<', searchMsg,'>');
+    if(this.socket_) {
+      this.socket_.send(JSON.stringify(searchMsg));
+    }
+  };
+
+  onMessageWSS_(event) {
+    //console.log('onMessageWSS_:: event.data=<', event.data,'>');
+    try {
+      const jMsg = JSON.parse(event.data);
+      //console.log('onMessageWSS_:: jMsg=<', jMsg,'>');
+      if (jMsg.kword) {
+        this.onKWordResult_(jMsg.kword,jMsg.cbtag);
+      } else if (jMsg.kvalue) {
+        this.onKValueResult_(jMsg.kvalue);
+      } else {
+        console.log('onMessageWSS_:: jMsg=<', jMsg,'>');
+      }
+    } catch (e) {
+      console.log('onMessageWSS_:: e=<', e,'>');
+    }
+  };
+
+  onKWordResult_(msg,cbtag) {
+    console.log('onKWordResult_:: msg=<', msg,'>');
+    if(!gResultMemoByCBTag[cbtag]) {
+      gResultMemoByCBTag[cbtag] = msg.total;
+    } else {
+      if(gResultMemoByCBTag[cbtag] > msg.total) {
+        return;
+      } else {
+        gResultMemoByCBTag[cbtag] = msg.total;
+      }
+    }
+    if(msg.total > -1) {
+      try {
+        gTotalPageNumber = Math.ceil(parseInt(msg.total)/iConstOnePageResult);
+        onShowStatsResultApp(msg);
+        for(const cid of msg.content) {
+          if(!gAllResultsByCID[cid]){
+            gAllResultsByCID[cid] = true
+            //console.log('onKWordResult:: cid=<', cid,'>');
+            onShowSearchResultFrameRow(cid);
+          }
+        }
+      } catch (e) {
+        console.log('onKWordResult:: e=<', e,'>');
+      }    
     }
   }
+
+  onKValueResult_(msg) {
+    console.log('onKValueResult_:: msg=<', msg,'>');
+    if(msg.address && msg.content) {
+      onShowSearchResultOneRow(msg.address,msg.content);
+    }
+  }
+  
 };
-const onCloseWSS = (event)=> {
-  console.log('onCloseWSS:: event=<', event,'>');
-};
-const onErrorWSS = (event)=> {
-  console.log('onErrorWSS:: event=<', event,'>');
-};
+
 
 const parseURLParam =() => {
   //console.log('parseURLParam:: window.location.search=<', window.location.search,'>');
@@ -64,76 +155,20 @@ const parseRoute = () => {
 }
 
 
-const onMessageWSS = (event)=> {
-  //console.log('onMessageWSS:: event.data=<', event.data,'>');
-  try {
-    const jMsg = JSON.parse(event.data);
-    //console.log('onMessageWSS:: jMsg=<', jMsg,'>');
-    if (jMsg.kword) {
-      onKWordResult(jMsg.kword,jMsg.cbtag);
-    } else if (jMsg.kvalue) {
-      onKValueResult(jMsg.kvalue);
-    } else {
-      console.log('onMessageWSS:: jMsg=<', jMsg,'>');
-    }
-  } catch (e) {
-    console.log('onMessageWSS:: e=<', e,'>');
-  }
-};
+
 
 let gTotalPageNumber = false;
 const gAllResultsByCID = {};
 
 const gResultMemoByCBTag = {};
 
-const onKWordResult = (msg,cbtag) => {
-  console.log('onKWordResult:: msg=<', msg,'>');
-  if(!gResultMemoByCBTag[cbtag]) {
-    gResultMemoByCBTag[cbtag] = msg.total;
-  } else {
-    if(gResultMemoByCBTag[cbtag] > msg.total) {
-      return;
-    } else {
-      gResultMemoByCBTag[cbtag] = msg.total;
-    }
-  }
-  if(msg.total > -1) {
-    try {
-      gTotalPageNumber = Math.ceil(parseInt(msg.total)/iConstOnePageResult);
-      onShowStatsResultApp(msg);
-      for(const cid of msg.content) {
-        if(!gAllResultsByCID[cid]){
-          gAllResultsByCID[cid] = true
-          //console.log('onKWordResult:: cid=<', cid,'>');
-          onShowSearchResultFrameRow(cid);
-        }
-      }
-    } catch (e) {
-      console.log('onKWordResult:: e=<', e,'>');
-    }    
-  }
-}
-
-const onKValueResult = (msg) => {
-  console.log('onKValueResult:: msg=<', msg,'>');
-  if(msg.address && msg.content) {
-    onShowSearchResultOneRow(msg.address,msg.content);
-  }
-}
 
 
 
 
 
-const LocalStorageHistory = 'wator/ermu/history';
 
-const startSearchText = (searchMsg) => {
-  localStorage.setItem(LocalStorageHistory,JSON.stringify(searchMsg));
-  //console.log('onMessageWSS::startSearchText searchMsg=<', searchMsg,'>');
-  if(socket) {
-    socket.send(JSON.stringify(searchMsg));
-  }
-};
+
 
 const getHistoryKeywords = () => {
   const historyStr = localStorage.getItem(LocalStorageHistory);
@@ -147,17 +182,6 @@ const getHistoryKeywords = () => {
   return null;
 };
 
-const getHistory = () => {
-  const historyStr = localStorage.getItem(LocalStorageHistory);
-  try {
-    const historyJson = JSON.parse(historyStr);
-    //console.log('onMessageWSS::getHistory historyJson=<', historyJson,'>');
-    return historyJson;
-  } catch(e) {
-    console.log('onMessageWSS::getHistory e=<', e,'>');
-  }
-  return {};
-};
 
 
 

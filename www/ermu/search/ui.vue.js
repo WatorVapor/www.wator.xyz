@@ -5,10 +5,15 @@ let gTotalPage = 0;
 let gShowResultsPages = [];
 
 let gCurrentViewPageInext = 0;
-const searchMsg = getHistory();
+
+let gCurrentViewPageIndex = 0;
+
+
+const searchMsg = ErmuWss.getHistory();
 if(searchMsg) {
   gCurrentViewPageIndex = searchMsg.begin /iConstOnePageResult;
 }
+
 if(gCurrentViewPageIndex < 0) {
   gCurrentViewPageIndex  = 0;
 }

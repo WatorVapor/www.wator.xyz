@@ -1,25 +1,3 @@
-document.addEventListener('DOMContentLoaded',(evt) =>{
-  onDocumentReadyUI(evt);
-});
-
-
-const onDocumentReadyUI = (evt) =>{
-  console.log('ui.evt::onDocumentReadyUI evt=<', evt,'>');
-  onShowSearchLastHistory();
-};
-
-
-const onShowSearchLastHistory = ()=> {
-  let historyText = getHistoryKeywords();
-  if(!historyText) {
-    historyText = '搜索';
-  }
-  const keywordsElement = document.getElementById('search-keywords-input-text');
-  keywordsElement.value = historyText;
-
-};
-
-
 const LocalStorageSearchKeyWordFromIndex = 'wator/ermu/search/keyword4index';
 
 const uiOnClickSearch = (evt) => {
