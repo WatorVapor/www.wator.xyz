@@ -1,3 +1,24 @@
+document.addEventListener('DOMContentLoaded',(evt) =>{	
+  onDocumentReadyUI(evt);	
+});	
+
+
+const onDocumentReadyUI = (evt) =>{	
+  onShowSearchLastHistory();	
+};	
+
+
+const onShowSearchLastHistory = ()=> {	
+  let historyText = getHistoryKeywords();	
+  if(!historyText) {	
+    historyText = '搜索';	
+  }	
+  const keywordsElement = document.getElementById('search-keywords-input-text');	
+  keywordsElement.value = historyText;	
+
+};
+
+
 const gResultPages = [];
 let gResultPagesApp = false;
 let gTotalPage = 0;
