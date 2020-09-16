@@ -45,13 +45,13 @@
      <hr/>
    
     <div class="container d-none" id="vue-ui-app-rows-result-frame">
-      <div class="row justify-content-center border border-secondary rounded rounded-lg mb-3" v-for="rowResultCID in searchResultCIDRows">
+      <div class="row justify-content-center mb-3" v-for="rowResultCID in searchResultCIDRows">
         <div class="col-1" v-bind:id="rowResultCID.spinner">
           <div class="spinner-grow text-primary" role="status">
             <span class="sr-only"></span>
           </div>
         </div>
-        <div class="col-11" v-bind:id="rowResultCID.frame">
+        <div class="col-8 border border-secondary rounded rounded-lg" v-bind:id="rowResultCID.frame">
           <div class="row justify-content-start align-items-left">
             <p class="text-success font-weight-bold ml-1 mr-1">
               <span class="badge badge-info" v-bind:id="rowResultCID.freq"></span>
@@ -64,12 +64,14 @@
             <p v-bind:id="rowResultCID.summary" class="font-weight-light"></p>
           </div>              
         </div>
+        <div class="col-3" v-bind:id="rowResultCID.frame">
+        </div>
       </div>
-    </div>    
+    </div>
 
     <div class="container d-none mt-2" id="vue-ui-app-pages-nav-result">
       <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-11">
           <div class="btn-toolbar mb-2 ml-2" role="toolbar">
             <div class="btn-group mr-2" role="group">
               <button type="button" class="btn btn-outline-primary btn-sm" onclick="uiOnClickSearchPrevPage(this)">
