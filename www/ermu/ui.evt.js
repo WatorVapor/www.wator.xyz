@@ -8,18 +8,19 @@ document.addEventListener('DOMContentLoaded',(evt) =>{
 
 const onDocumentReadyUI = (evt) =>{
   //console.log('ui.evt::onDocumentReadyUI evt=<', evt,'>');
-  onShowSearchLastHistory();
-};
-
-
-const onShowSearchLastHistory = ()=> {
-  let historyText = getHistoryKeywords();
-  if(!historyText) {
-    historyText = '搜索';
+  const historyOfSearch = {
+    data() {
+      let historyText = getHistoryKeywords();
+      if(!historyText) {
+        historyText = '搜索';
+      }
+      return {
+        history: historyText
+      }
+    }
   }
-  const keywordsElement = document.getElementById('search-keywords-input-text');
-  keywordsElement.value = historyText;
-
+  const searchEntry = Vue.createApp(historyOfSearch);
+  searchEntry.mount('#ui-search-input-entry');
 };
 
 
