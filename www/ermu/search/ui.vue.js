@@ -2,20 +2,21 @@ document.addEventListener('DOMContentLoaded',(evt) =>{
   onDocumentReadyUI(evt);	
 });	
 
-
 const onDocumentReadyUI = (evt) =>{	
   onShowSearchLastHistory();	
 };	
 
-
 const onShowSearchLastHistory = ()=> {	
-  let historyText = getHistoryKeywords();	
-  if(!historyText) {	
-    historyText = '搜索';	
-  }	
-  const keywordsElement = document.getElementById('search-keywords-input-text');	
-  keywordsElement.value = historyText;	
-
+  let historyText = getHistoryKeywords();
+  if(!historyText) {
+    historyText = '搜索';
+  }
+  const searchEntry = new Vue({
+    el:'#ui-search-input-text',
+    data:{
+      history: historyText
+    }
+  });
 };
 
 
@@ -51,7 +52,7 @@ const onShowStatsResultApp = (msg) =>{
   for(let page = 1;page <= totalPage;page++) {
     gResultPages.push({number:page,isView:false});
   }
-  console.log('ui.vue::onShowStatsResultApp gResultPages=<', gResultPages,'>');
+  //console.log('ui.vue::onShowStatsResultApp gResultPages=<', gResultPages,'>');
   if(gResultPages[gCurrentViewPageIndex]) {
     gResultPages[gCurrentViewPageIndex].isView = true;
   }
@@ -65,23 +66,23 @@ const onShowStatsResultApp = (msg) =>{
   gTotalPage = parseInt(msg.total);
   //console.log('ui.vue::onShowStatsResultApp gTotalPage=<', gTotalPage,'>');
   if(gResultPagesApp === false) {
-    gResultPagesApp = new Vue({
-      el: '#vue-ui-app-pages-nav-result',
-      data: {
+    gResultPagesApp= new Vue({
+      el:'#vue-ui-app-pages-nav-result',
+      data:{
         pages: gShowResultsPages
       }
-    });    
+    });
   } else {
     console.log('ui.vue::onShowStatsResultApp gResultPagesApp=<', gResultPagesApp,'>');
   }
 
   if(gResultTotalApp === false) {
-    gResultTotalApp = new Vue({
-      el: '#vue-ui-app-pages-total-result',
-      data: {
-        total:gTotalPage
+    gResultTotalApp= new Vue({
+      el:'#vue-ui-app-pages-total-result',
+      data:{
+        total: gTotalPage
       }
-    });    
+    });
   } else {
     //console.log('ui.vue::onShowStatsResultApp gResultTotalApp=<', gResultTotalApp,'>');
     if(gTotalPage > gResultTotalApp.total) {
@@ -109,13 +110,16 @@ const onShowSearchResultFrameRow = (cid) => {
     summary:'summary-' + cid
   };
   gResultFrameRows.push(idElem);
+  
   if(gResultFrameRowsApp === false) {
-    gResultFrameRowsApp = new Vue({
-      el: '#vue-ui-app-rows-result-frame',
-      data: {
+    gResultFrameRowsApp= new Vue({
+      el:'#vue-ui-app-rows-result-frame',
+      data:{
         searchResultCIDRows: gResultFrameRows
       }
-    });    
+    });
+  } else {
+    console.log('ui.vue::onShowSearchResultFrameRow gResultFrameRowsApp=<', gResultFrameRowsApp,'>');
   }
   $('#vue-ui-app-rows-result-frame').removeClass("d-none");
 }

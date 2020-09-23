@@ -13,13 +13,13 @@
     <nav class="navbar sticky-top navbar-light bg-light">
       <div class="container>
         <form class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="ui-search-input-text">
             <div class="input-group-prepend">
               <a class="navbar-brand font-weight-bolder" href="/ermu">
                  <i class="material-icons">home</i>千耳目
               </a>
             </div>
-            <input type="text" class="form-control" id="search-keywords-input-text" ></input>
+            <input type="text" class="form-control" :value="history"></input>
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" onclick="uiOnClickSearch(this)">
                 <i class="material-icons">search</i>
