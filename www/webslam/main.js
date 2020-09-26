@@ -3,13 +3,18 @@ const onOpenCvReady = ()=> {
 }
 
 const onOpenCvRTReady = () => {
-  const imgElement = document.getElementById('img_input');
-  const mat = cv.imread(imgElement);
-  onImageMat(mat);
+  const imgElement1 = document.getElementById('img_input-1');
+  const mat1 = cv.imread(imgElement1);
+  onImageMat(mat1,'-1');
+
+  const imgElement2 = document.getElementById('img_input-2');
+  const mat2 = cv.imread(imgElement2);
+  onImageMat(mat2,'-2');
+
 }
 
-onImageMat = (mat) => {
-  forward(Layer1,mat);
+onImageMat = (mat,suffix) => {
+  forward(Layer1,mat,suffix);
 }
 
 const f1 = 1.0;
@@ -34,9 +39,9 @@ const Layer1 = {
   }
 };
 
-const iConstFilterOut = 8;
+const iConstFilterOut = 9;
 
-const forward = (layer,mat) => {
+const forward = (layer,mat,suffix) => {
   console.log('forward:layer:=<',layer,'>');
   console.log('forward::mat.cols:=<',mat.cols,'>');
   console.log('forward::mat.rows:=<',mat.rows,'>');
@@ -56,9 +61,9 @@ const forward = (layer,mat) => {
     }
   }
   //onLoadStats(allVals);
-  showOutData(allVals.R,mat,layer,'img_output_r',0);
-  showOutData(allVals.G,mat,layer,'img_output_g',1);
-  showOutData(allVals.B,mat,layer,'img_output_b',2);
+  showOutData(allVals.R,mat,layer,'img_output_r'+suffix,0);
+  showOutData(allVals.G,mat,layer,'img_output_g'+suffix,1);
+  showOutData(allVals.B,mat,layer,'img_output_b'+suffix,2);
 }
 
 
@@ -145,7 +150,7 @@ const showOutData = (outChannelVals,mat,layer,elemId,channel) => {
     matOutB.ucharPtr(row, col)[3] = 254;
     //console.log('forward:: matOutB.ucharPtr(value.r, value.c):=<', matOutB.ucharPtr(value.r, value.c),'>');
   }
-  const outElementB = document.getElementById(elemId + '_l');
+  const outElementB = document.getElementById(elemId);
   cv.imshow(outElementB, matOutB);  
 };
 
