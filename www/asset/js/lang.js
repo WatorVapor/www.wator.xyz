@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', async (evt) => {
   //console.log('::langModule.data=<',langModule.data,'>');
   const langElem = document.querySelectorAll('.vue-lang');
   langElem.forEach((el, i) => {
-    new Vue({
-      el: el,
-      data: langModule.data
-    });  
+    const app = Vue.createApp({
+      data() {
+        return langModule.data;
+      }     
+    });
+    app.mount(el);
   });
 });

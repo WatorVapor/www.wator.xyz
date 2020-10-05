@@ -75,6 +75,8 @@ const navbarTemplate =
   </div>
 `
 
+
+/*
 Vue.component('w-navbar', {
   template: navbarTemplate,
   data: ()=>{
@@ -89,12 +91,33 @@ Vue.component('w-navbar', {
     };
   }
 });
+*/
+
 
 $(document).ready( () => {
+  const topNaveBar = Vue.createApp({});
+  topNaveBar.component('w-navbar', {
+    template: navbarTemplate,
+    data: ()=>{
+      const edauth = new EDAuth();
+      const isAuthed = edauth.isAuthed();
+      console.log('w-navbar::isAuthed=<',isAuthed,'>');
+      const profile = edauth.getProfile();
+      console.log('w-navbar::profile=<',profile,'>');
+      return {
+        isAuthed:isAuthed,
+        name:profile.name
+      };
+    }    
+  });
+  /*
   const topNaveBar = new Vue({
     el: '#vue-navbar-top'
   });
+  */
   console.log('w-navbar::topNaveBar=<',topNaveBar,'>');
+  topNaveBar.mount('#vue-navbar-top');
+  
 });
 
 $(function () {

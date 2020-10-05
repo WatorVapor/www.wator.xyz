@@ -5,13 +5,12 @@ $(document).ready( () => {
 });
 const onLoadKey = () => {
   const token = edauth.getTokenKey();
-  
-  const singin = new Vue({
-    el: '#vue-signin',
-    data: {
-      token:token
-    }
+  const singin = Vue.createApp({
+    data() {
+      return {token:token};
+    }     
   });
+  singin.mount('#vue-signin');
   console.log('onLoadKey::singin=<',singin,'>');
 }
 
