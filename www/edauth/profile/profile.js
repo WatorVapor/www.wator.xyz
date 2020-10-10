@@ -28,7 +28,6 @@ const onUIClickProfile = (elem) => {
   const name = document.getElementById('profile-name').value;
   //console.log('onUIClickProfile::name=<',name,'>');
   const msg = {
-    route:'/api/edauth/signin',
     act:'profile',
     name:name
   };

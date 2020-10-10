@@ -17,7 +17,6 @@ const onLoadKey = () => {
 const onUIClickSignin = (elem) => {
   //console.log('onUIClickSignin::elem=<',elem,'>');
   const msg = {
-    route:'/api/edauth/signin',
     act:'signin'
   };
   const tokenMsg = edauth.sign(msg);

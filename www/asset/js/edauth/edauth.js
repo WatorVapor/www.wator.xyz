@@ -92,6 +92,7 @@ class EDAuth {
       return msg;
     }
     const signMsgObj = {
+      route:Location.pathname,
       payload:msg,
       ts:(new Date()).toISOString(),
       token:tokenCalc

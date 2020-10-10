@@ -21,7 +21,6 @@ class WatorWss {
   sendMsg (msg){
     this.socket.send(JSON.stringify(msg));
   }
-
   onOpenWSS(evt) {
     console.log('WatorWss::onOpenWSS: evt=<', evt,'>');
   };
@@ -42,5 +41,5 @@ class WatorWss {
     } catch(err) {
       console.error('WatorWss::onMessageWSS: err=<', err,'>');
     }
-  } 
+  }
 }
