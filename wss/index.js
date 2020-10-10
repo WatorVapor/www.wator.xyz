@@ -61,12 +61,35 @@ const onWSMsg = (message,ws) => {
   }
 };
 
+const onGoodAuthMsg = (jsonMsg,ws) => {
+  //console.log('onGoodAuthMsg: jsonMsg=<', jsonMsg,'>');
+  const Routes = require('./route.js');
+  //console.log('onGoodAuthMsg: Routes=<', Routes,'>');
+  try {
+    for(const route of Routes) {
+      //console.log('onGoodAuthMsg: route=<', route,'>');
+      const pureRoute = route[0].split('/').join('');
+      //console.log('onGoodAuthMsg: pureRoute=<', pureRoute,'>');
+      const purePath = jsonMsg.path.split('/').join('');
+      //console.log('onGoodAuthMsg: purePath=<', purePath,'>');
+      if(purePath === pureRoute) {
+        return onMatchRoute(route,jsonMsg,ws);
+      }
+    }
+  } catch(err) {
+    console.log('onGoodAuthMsg: err=<', err,'>');
+  }
+};
+const onMatchRoute = (route,jsonMsg,ws) => {
+  console.log('onMatchRoute: route=<', route,'>');
+}
 
+/*
 const MongoStorage = require('./storage.js');
 const mongo = new MongoStorage();
 
 const onGoodAuthMsg = (jsonMsg,ws) => {
-  //console.log('onGoodAuthMsg: jsonMsg=<', jsonMsg,'>');
+  console.log('onGoodAuthMsg: jsonMsg=<', jsonMsg,'>');
   if(jsonMsg.payload) {
     const payload = jsonMsg.payload;
     if(payload.act === 'signup') {
@@ -93,3 +116,4 @@ const onGoodAccount = (profile,ws) => {
     ws.send(JSON.stringify({payload:{act: 'signup',failure:true}}));
   }
 }
+*/

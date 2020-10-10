@@ -92,12 +92,12 @@ class EDAuth {
       return msg;
     }
     const signMsgObj = {
-      route:Location.pathname,
+      path:location.pathname,
       payload:msg,
       ts:(new Date()).toISOString(),
       token:tokenCalc
     };
-    //console.log('EDAuth::sign::signMsgObj=<',signMsgObj,'>');
+    console.log('EDAuth::sign::signMsgObj=<',signMsgObj,'>');
     const toSignSHA3 = CryptoJS.SHA3(JSON.stringify(signMsgObj), { outputLength: 512  }).toString(CryptoJS.enc.Base64);
     const toSignRIPEMD160 = CryptoJS.RIPEMD160(toSignSHA3).toString(CryptoJS.enc.Base64);
     const toSignMsg = nacl.util.decodeBase64(toSignRIPEMD160);
