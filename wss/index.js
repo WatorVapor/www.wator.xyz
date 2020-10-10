@@ -78,10 +78,30 @@ const onGoodAuthMsg = (jsonMsg,ws) => {
     }
   } catch(err) {
     console.log('onGoodAuthMsg: err=<', err,'>');
+    ws.send(JSON.stringify(err));
   }
+  console.log('onGoodAuthMsg: jsonMsg=<', jsonMsg,'>');
+  console.log('onGoodAuthMsg: Routes=<', Routes,'>');
 };
 const onMatchRoute = (route,jsonMsg,ws) => {
-  console.log('onMatchRoute: route=<', route,'>');
+  //console.log('onMatchRoute: route=<', route,'>');
+  const controllerPartern = route[1];
+  //console.log('onMatchRoute: controllerPartern=<', controllerPartern,'>');
+  const routeP = controllerPartern.split('@');
+  const path1 = routeP[0];
+  const path2 = path1.split('.').join('/');
+  const pathJs = `./controller/${path2}.js`;
+  //console.log('onMatchRoute: pathJs=<', pathJs,'>');
+  const Controller = require(pathJs);
+  //console.log('onMatchRoute: Controller=<', Controller,'>');
+  const controller = new Controller();
+  //console.log('onMatchRoute: controller=<', controller,'>');
+  const method = routeP[1];
+  console.log('onMatchRoute: method=<', method,'>');
+  const reply = controller[method](jsonMsg);
+  if(reply) {
+    ws.send(JSON.stringify(reply));
+  }
 }
 
 /*
