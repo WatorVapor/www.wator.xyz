@@ -5,37 +5,40 @@ $(document).ready( () => {
 });
 const onLoadKeyProfile = () => {
   const token = edauth.getTokenKey();
-  const tokenApp = new Vue({
-    el: '#vue-profile-token',
-    data: {
-      token:token
-    }
+  const tokenApp = Vue.createApp({
+    data() {
+      return {token:token};
+    }    
   });
-  console.log('onLoadKeyProfile::tokenApp=<',tokenApp,'>');
+  tokenApp.mount('#vue-profile-token');
+  //console.log('onLoadKeyProfile::tokenApp=<',tokenApp,'>');
   const profile = edauth.getProfile();
-  console.log('onLoadKeyProfile::profile=<',profile,'>');
-  const nameApp = new Vue({
-    el: '#vue-profile-name',
-    data: profile
+  //console.log('onLoadKeyProfile::profile=<',profile,'>');
+  const nameApp = Vue.createApp({
+    data() {
+      return profile;
+    }    
   });
-  console.log('onLoadKeyProfile::nameApp=<',nameApp,'>');
+  nameApp.mount('#vue-profile-name');
+  //console.log('onLoadKeyProfile::nameApp=<',nameApp,'>');
 }
 
 const onUIClickProfile = (elem) => {
   //console.log('onUIClickProfile::elem=<',elem,'>');
   const name = document.getElementById('profile-name').value;
-  console.log('onUIClickProfile::name=<',name,'>');
+  //console.log('onUIClickProfile::name=<',name,'>');
   const msg = {
+    route:'/api/edauth/signin',
     act:'profile',
     name:name
   };
   const tokenMsg = edauth.sign(msg);
-  console.log('onUIClickProfile::tokenMsg=<',tokenMsg,'>');
+  //console.log('onUIClickProfile::tokenMsg=<',tokenMsg,'>');
   wss.sendMsg(tokenMsg);
 }
 
 wss.onMsg = (msg)=> {
-  console.log('wss.onMsg::msg=<',msg,'>');
+  //console.log('wss.onMsg::msg=<',msg,'>');
   if(msg.payload && msg.payload.act === 'signup') {
     edauth.saveSignin(msg);
     history.back();

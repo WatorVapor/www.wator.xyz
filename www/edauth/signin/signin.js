@@ -11,12 +11,13 @@ const onLoadKey = () => {
     }     
   });
   singin.mount('#vue-signin');
-  console.log('onLoadKey::singin=<',singin,'>');
+  //console.log('onLoadKey::singin=<',singin,'>');
 }
 
 const onUIClickSignin = (elem) => {
   //console.log('onUIClickSignin::elem=<',elem,'>');
   const msg = {
+    route:'/api/edauth/signin',
     act:'signin'
   };
   const tokenMsg = edauth.sign(msg);
@@ -25,7 +26,7 @@ const onUIClickSignin = (elem) => {
 }
 
 wss.onMsg = (msg)=> {
-  console.log('wss.onMsg::msg=<',msg,'>');
+  //console.log('wss.onMsg::msg=<',msg,'>');
   if(msg.payload && msg.payload.act === 'signup') {
     edauth.saveSignin(msg);
     history.back();
