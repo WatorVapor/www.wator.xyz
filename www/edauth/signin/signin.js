@@ -26,8 +26,10 @@ const onUIClickSignin = (elem) => {
 
 wss.onMsg = (msg)=> {
   //console.log('wss.onMsg::msg=<',msg,'>');
-  if(msg.payload && msg.payload.act === 'signup') {
-    edauth.saveSignin(msg);
-    history.back();
+  if(msg&& msg.payload) {
+    if(msg.payload.act === 'signup' || msg.payload.act === 'profile') {
+      edauth.saveSignin(msg);
+      history.back();
+    }
   }
 }

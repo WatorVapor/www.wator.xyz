@@ -83,7 +83,7 @@ const onGoodAuthMsg = (jsonMsg,ws) => {
   console.log('onGoodAuthMsg: jsonMsg=<', jsonMsg,'>');
   console.log('onGoodAuthMsg: Routes=<', Routes,'>');
 };
-const onMatchRoute = (route,jsonMsg,ws) => {
+const onMatchRoute = async (route,jsonMsg,ws) => {
   //console.log('onMatchRoute: route=<', route,'>');
   const controllerPartern = route[1];
   //console.log('onMatchRoute: controllerPartern=<', controllerPartern,'>');
@@ -98,7 +98,7 @@ const onMatchRoute = (route,jsonMsg,ws) => {
   //console.log('onMatchRoute: controller=<', controller,'>');
   const method = routeP[1];
   console.log('onMatchRoute: method=<', method,'>');
-  const reply = controller[method](jsonMsg);
+  const reply = await controller[method](jsonMsg);
   if(reply) {
     ws.send(JSON.stringify(reply));
   }

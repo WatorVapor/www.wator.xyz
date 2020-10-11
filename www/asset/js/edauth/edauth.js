@@ -38,7 +38,9 @@ class EDAuth {
     if(signin) {
       if(signin._profile) {
         return signin._profile.payload;
-      } else if( signin.payload && signin.payload.act === 'signup' && signin.payload.profile) {
+      } else if( signin.payload && signin.payload.act === 'signup') {
+        return signin.payload.profile;
+      } else if( signin.payload && signin.payload.act === 'profile') {
         return signin.payload.profile;
       } else {
         console.log('EDAuth::getProfile::signin=<',signin,'>');

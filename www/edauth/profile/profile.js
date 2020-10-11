@@ -29,7 +29,9 @@ const onUIClickProfile = (elem) => {
   //console.log('onUIClickProfile::name=<',name,'>');
   const msg = {
     act:'profile',
-    name:name
+    profile:{
+      name:name
+    }
   };
   const tokenMsg = edauth.sign(msg);
   //console.log('onUIClickProfile::tokenMsg=<',tokenMsg,'>');
