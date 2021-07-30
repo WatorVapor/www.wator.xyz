@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const username = encodeURIComponent('tYm0IdZ2');
 const password = encodeURIComponent('hy8YXhln');
 const authMechanism = "DEFAULT";
-const dbURL = `mongodb://%2Fdev%2Fshm%2Fmongodb-27017.sock`;
+const dbURL = `mongodb://${username}:${password}@%2Fdev%2Fshm%2Fmongodb-27017.sock`;
 const connectOption = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

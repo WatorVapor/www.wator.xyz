@@ -1,6 +1,8 @@
 const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
-const dbURL = `mongodb://%2Fdev%2Fshm%2Fmongodb-27017.sock`;
+const username = encodeURIComponent('tYm0IdZ2');
+const password = encodeURIComponent('hy8YXhln');
+const dbURL = `mongodb://${username}:${password}@%2Fdev%2Fshm%2Fmongodb-27017.sock`;
 const connectOption = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

@@ -6,7 +6,7 @@ echo "PARENT_DiR:=${PARENT_DiR}"
 DOCKER_MAME=www.wator.xyz.ws.api.unix
 docker stop ${DOCKER_MAME}
 docker rm ${DOCKER_MAME}
-docker run -d \
+docker run -it \
   -v /etc/group:/etc/group:ro \
   -v /etc/passwd:/etc/passwd:ro \
   -v /dev/shm/:/dev/shm/ \
@@ -17,5 +17,4 @@ docker run -d \
   --memory=256M \
   --cpu-shares=128 \
   --name "${DOCKER_MAME}" \
-  --restart=always \
   node:lts node ./wss/index.js
