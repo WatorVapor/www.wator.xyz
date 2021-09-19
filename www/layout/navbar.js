@@ -27,6 +27,14 @@ const navbarTemplate =
               <a class="" href="/niuma"><i class="material-icons md-48" target="_blank">electric_car</i></a>
             </div>
           </div> 
+          <div class="row ml-2 mt-3">
+            <div class="col">
+              <a class="" href="/cheaplidar"><i class="material-icons md-48" target="_blank">devices</i></a>
+            </div>
+            <div class="col">
+              
+            </div>
+          </div> 
         </div>
       </li>
       <li class="nav-item dropdown mr-5">
