@@ -24,6 +24,7 @@ const navbarTemplate =
               <a class="" href="/ermu"><i class="material-icons md-48" target="_blank">search</i></a>
             </div>
             <div class="col">
+              <a class="" href="/niuma"><i class="material-icons md-48" target="_blank">electric_car</i></a>
             </div>
           </div> 
         </div>

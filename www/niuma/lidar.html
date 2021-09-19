@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha256-djO3wMl9GeaC/u6K+ic4Uj/LKhRUSlUFcsruzS7v5ms=" crossorigin="anonymous">
+  </head>
+   <body>
+    <div class="container-fluid mt-5" id="vue-ui-open-serial">
+      <btn-open-serial></btn-open-serial>
+    </div>
+    <hr/>
+    <div class="container-fluid mt-1">
+      <div class="row justify-content-center">
+        <div class="col-8 justify-content-center">
+          <canvas id="canvas-lidar-point-cloud" class="w-100" height="720"></canvas>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.130.0/build/three.min.js" integrity="sha256-dbEjIXMDSTQ6VNsrBqaN6u0VvyYVgIvmzNUknkURbP0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.130.0/examples/js/controls/OrbitControls.js" integrity="sha256-9Eys2xnAkykPKzDJbo6vxJVqPPtwhMOFezAjy1rdQlU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.prod.js" integrity="sha256-vUyufywPLWATL+5NTyQFwAxyNJ+7p/xHeUi3Ayr/JmU=" crossorigin="anonymous"></script>
+    <script src="./buffer@5.4.3.js"></script>
+    <script src="./vue.component.js"></script>
+    <script src="./vue.ui.js"></script>
+    <script src="./WebSerialCandy.js"></script>
+    <script src="./lidar.js"></script>
+    <script src="./pointcloud.js"></script>
+  </body>
+</html>
