@@ -89,7 +89,7 @@ const uiOnClickMoveForward = (elem) => {
   //console.log('::uiOnClickMoveForward::elem=<',elem,'>');
   const cmd = {
     forward:{
-      speed:gVMDeviceSetting.speed
+      speed:parseInt(gVMDeviceSetting.speed)
     }
   }
   writeJsonCmd(cmd);
@@ -99,7 +99,7 @@ const uiOnClickMoveBackward = (elem) => {
   //console.log('::uiOnClickMoveBackward::elem=<',elem,'>');
   const cmd = {
     backward:{
-      speed:gVMDeviceSetting.speed
+      speed:parseInt(gVMDeviceSetting.speed)
     }
   }
   writeJsonCmd(cmd);
@@ -119,7 +119,7 @@ const uiOnClickTrunLeft = (elem) => {
   //console.log('::uiOnClickTrunLeft::elem=<',elem,'>');
   const cmd = {
     left:{
-      angle:gVMDeviceSetting.angle
+      angle:parseInt(gVMDeviceSetting.angle)
     }
   }
   writeJsonCmd(cmd);
@@ -129,7 +129,7 @@ const uiOnClickTrunRight = (elem) => {
   //console.log('::uiOnClickTrunRight::elem=<',elem,'>');
   const cmd = {
     right:{
-      angle:gVMDeviceSetting.angle
+      angle:parseInt(gVMDeviceSetting.angle)
     }
   }
   writeJsonCmd(cmd);
