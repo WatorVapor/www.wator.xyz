@@ -76,7 +76,7 @@ const createVueApp = () => {
   const appDeviceSetting = Vue.createApp({
     data() {
       return {
-        speed:32,
+        speed:128,
         angle:15
       }
     }
@@ -118,8 +118,8 @@ const uiOnClickStopAll = (elem) => {
 const uiOnClickTrunLeft = (elem) => {
   //console.log('::uiOnClickTrunLeft::elem=<',elem,'>');
   const cmd = {
-    left:{
-      angle:parseInt(gVMDeviceSetting.angle)
+    turn:{
+      angle: 0.0 + parseInt(gVMDeviceSetting.angle)
     }
   }
   writeJsonCmd(cmd);
@@ -128,11 +128,40 @@ const uiOnClickTrunLeft = (elem) => {
 const uiOnClickTrunRight = (elem) => {
   //console.log('::uiOnClickTrunRight::elem=<',elem,'>');
   const cmd = {
-    right:{
+    turn:{
+      angle:0.0 - parseInt(gVMDeviceSetting.angle)
+    }
+  }
+  writeJsonCmd(cmd);
+}
+
+const uiOnClickTrunStart = (elem) => {
+  //console.log('::uiOnClickTrunStart::elem=<',elem,'>');
+  const cmd = {
+    turn:{
       angle:parseInt(gVMDeviceSetting.angle)
     }
   }
   writeJsonCmd(cmd);
 }
 
+const uiOnClickTrunStop = (elem) => {
+  //console.log('::uiOnClickTrunStop::elem=<',elem,'>');
+  const cmd = {
+    stop:{
+      all:true
+    }
+  }
+  writeJsonCmd(cmd);
+}
+
+const uiOnClickSteeringCalibration = (elem) => {
+  //console.log('::uiOnClickSteeringCalibration::elem=<',elem,'>');
+  const cmd = {
+    steering:{
+      calibration:true
+    }
+  }
+  writeJsonCmd(cmd);
+}
 
