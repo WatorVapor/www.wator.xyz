@@ -77,7 +77,7 @@ const createVueApp = () => {
     data() {
       return {
         speed:128,
-        angle:15
+        angle:0
       }
     }
   });

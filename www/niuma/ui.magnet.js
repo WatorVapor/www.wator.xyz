@@ -60,7 +60,7 @@ const gMagnetData = {
     }
   ]
 };
-const iConstDataLength = 128;
+const iConstDataLength = 1024;
 let magnet_chart = false;
 const createMagnetChart = () => {
   const ctx = document.getElementById('magnet_chart').getContext('2d');
