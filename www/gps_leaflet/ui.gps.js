@@ -43,7 +43,7 @@ const gGPS = new GPS();
 gGPS.on('data', data => {
   //console.log('gGPS::data:=<',data,'>');
   if(data.type === 'GGA') {
-    //console.log('gGPS::data:=<',data,'>');
+    console.log('gGPS::data:=<',data,'>');
     updateMap(data.lat,data.lon);
   }
 });
@@ -60,44 +60,33 @@ document.addEventListener('DOMContentLoaded', async (evt) => {
   createMapView(0.0,0.0);
 });
 
-
-
-
 let gGPSMap = false;
 const createMapView = (lat,lon) => {
-  const layer =  new ol.layer.Tile({
-    source: new ol.source.OSM()
+  gGPSMap = L.map('view_map',{
+    center: [lat, lon],
+    zoom:19,
+    maxNativeZoom: 19
   });
-  const view = new ol.View({
-    center: ol.proj.fromLonLat([lat, lon]),
-    zoom: 20
-  })  
-  const mapOption = {
-    target: 'view_map',
-    layers: [
-      layer
-    ],
-    view: view
-  };
-  gGPSMap = new ol.Map(mapOption);
+  const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  });
+/*  
+  const tileLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}', {
+    attribution: "<a href='https://developers.google.com/maps/documentation' target='_blank'>Google Map</a>"
+  });
+*/
+  tileLayer.addTo(gGPSMap);
+  
 }
 
 let gGPSMapCenterOfRealGps = false;
 const updateMap = (lat,lon) => {
   if(gGPSMapCenterOfRealGps === false) {
-    gGPSMap.getView().setCenter(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'));
+    gGPSMap.panTo(new L.LatLng(lat, lon))
     gGPSMapCenterOfRealGps = true;
   }
-  const layerMarker = new ol.layer.Vector({
-       source: new ol.source.Vector({
-           features: [
-               new ol.Feature({
-                   geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat]))
-               })
-           ]
-       })
-   });
-  gGPSMap.addLayer(layerMarker);  
+  L.marker(new L.LatLng(lat,lon)).bindPopup('+').addTo(gGPSMap); 
+  //
 }
 
 
