@@ -21,18 +21,25 @@ const navbarTemplate =
         <div class="dropdown-menu" aria-labelledby="navbarDropdownLang">
           <div class="row ml-2">
             <div class="col">
-              <a class="" href="/ermu/"><i class="material-icons md-48" target="_blank">search</i></a>
+              <a class=""  target="_blank" href="/ermu/"><i class="material-icons md-48">search</i></a>
             </div>
             <div class="col">
-              <a class="" href="/niuma/"><i class="material-icons md-48" target="_blank">electric_car</i></a>
+              <a class=""  target="_blank" href="/niuma/"><i class="material-icons md-48">electric_car</i></a>
             </div>
           </div> 
           <div class="row ml-2 mt-3">
             <div class="col">
-              <a class="" href="/cheaplidar/"><i class="material-icons md-48" target="_blank">devices</i></a>
+              <a class=""  target="_blank" href="/cheaplidar/"><i class="material-icons md-48">radar</i></a>
             </div>
             <div class="col">
-              <a class="" href="/starbian/"><i class="material-icons md-48" target="_blank">flare</i></a>
+              <a class=""  target="_blank" href="/starbian/"><i class="material-icons md-48">flare</i></a>
+            </div>
+          </div> 
+          <div class="row ml-2 mt-3">
+            <div class="col">
+              <a class="" target="_blank" href="/gps/"><i class="material-icons md-48">gps_fixed</i></a>
+            </div>
+            <div class="col">
             </div>
           </div> 
         </div>
@@ -85,24 +92,6 @@ const navbarTemplate =
 `
 
 
-/*
-Vue.component('w-navbar', {
-  template: navbarTemplate,
-  data: ()=>{
-    const edauth = new EDAuth();
-    const isAuthed = edauth.isAuthed();
-    console.log('w-navbar::isAuthed=<',isAuthed,'>');
-    const profile = edauth.getProfile();
-    console.log('w-navbar::profile=<',profile,'>');
-    return {
-      isAuthed:isAuthed,
-      name:profile.name
-    };
-  }
-});
-*/
-
-
 $(document).ready( () => {
   const topNaveBar = Vue.createApp({});
   topNaveBar.component('w-navbar', {
@@ -119,11 +108,6 @@ $(document).ready( () => {
       };
     }    
   });
-  /*
-  const topNaveBar = new Vue({
-    el: '#vue-navbar-top'
-  });
-  */
   console.log('w-navbar::topNaveBar=<',topNaveBar,'>');
   topNaveBar.mount('#vue-navbar-top');
   

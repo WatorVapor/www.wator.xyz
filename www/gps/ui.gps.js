@@ -41,7 +41,7 @@ const readDateFromGpsDevice = async (port)=> {
 
 const gGPS = new GPS();
 gGPS.on('data', data => {
-  //console.log('gGPS::data:=<',data,'>');
+  console.log('gGPS::data:=<',data,'>');
   if(data.type === 'GGA') {
     //console.log('gGPS::data:=<',data,'>');
     updateMap(data.lat,data.lon);
