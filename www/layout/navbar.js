@@ -13,6 +13,17 @@ const navbarTemplate =
         </a>
       </li>
     </ul>
+    <ul class="navbar-nav nav justify-content-center">
+      <li class="nav-item active ml-lg-4">
+        <a class="btn btn-lg btn-info nav-btn" href="/maap" role="button">
+          <i class="text-primary material-icons md-48">assistant_direction</i>
+          <i class="text-primary material-icons md-48">near_me</i>
+          <i class="text-primary material-icons md-48">map</i>
+          <i class="text-primary material-icons md-48">maps_home_work</i>
+          <i class="text-primary material-icons md-48">factory</i>
+        </a>
+      </li>
+    </ul>
     <ul class="navbar-nav nav justify-content-end">
       <li class="nav-item dropdown mr-5">
         <a class="nav-link dropdown-toggle btn-lg" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,9 +51,16 @@ const navbarTemplate =
               <a class="" target="_blank" href="/gps/"><i class="material-icons md-48">gps_fixed</i></a>
             </div>
             <div class="col">
+              <a class="" target="_blank" href="/webstereo/"><i class="material-icons md-48">monochrome_photos</i></a>
             </div>
           </div> 
-        </div>
+          <div class="row ml-2 mt-3">
+            <div class="col">
+              <a class="" target="_blank" href="/webslam/"><i class="material-icons md-48">cloud_circle</i></a>
+            </div>
+            <div class="col">
+            </div>
+          </div>        </div>
       </li>
       <li class="nav-item dropdown mr-5">
         <a class="nav-link dropdown-toggle btn-lg" href="#" id="navbarDropdownLang" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

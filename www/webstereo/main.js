@@ -1,5 +1,6 @@
-const onOpenCvReady = ()=> {
+const onOpenCvReady = (evt)=> {
   //cv['onRuntimeInitialized'] = onOpenCvRTReady ;
+  console.log('onOpenCvReady:evt:=<',evt,'>');
 }
 
 
@@ -69,7 +70,8 @@ const onUIClickStereo = (elem) => {
   console.log('onUIClickStereo:elem:=<',elem,'>');
   if(videoMain) {
     const mainCap = new cv.VideoCapture(videoMain);
-    const mainMat = new cv.Mat(videoMain.height, videoMain.width, cv.CV_8UC4);
+    console.log('onUIClickStereo:mainCap:=<',mainCap,'>');
+    const mainMat = new cv.Mat(mainCap.video.height, mainCap.video.width, cv.CV_8UC4);
     mainCap.read(mainMat);
     console.log('onCameraFound:mainMat:=<',mainMat,'>');
     setTimeout(()=>{
@@ -78,7 +80,8 @@ const onUIClickStereo = (elem) => {
   }
   if(videoSub) {
     const subCap = new cv.VideoCapture(videoSub);
-    const subMat = new cv.Mat(videoSub.height, videoSub.width, cv.CV_8UC4);
+    console.log('onUIClickStereo:subCap:=<',subCap,'>');
+    const subMat = new cv.Mat(subCap.video.height, subCap.video.width, cv.CV_8UC4);
     subCap.read(subMat);
     console.log('onCameraFound:subMat:=<',subMat,'>');
     setTimeout(()=>{

@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=0.35, maximum-scale=0.35,minimum-scale=0.35">
-    <title>OpenCV</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.1/dist/css/bootstrap.min.css" integrity="sha256-VoFZSlmyTXsegReQCNmbXrS4hBBUl/cexZvPmPWoJsY=" crossorigin="anonymous">
+    <title>Web Stero</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha256-YvdLHPgkqJ8DVUxjjnGVlMMJtNimJ6dYkowFFvp4kKs=" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container">
-      <div class="row mt-2">
+    <div class="container-fluid">
+      <div class="row mt-1">
         <div class="col-6">
           <button type="button" class="btn btn-primary" onclick="onUIClickStart(this)">Start</button>
         </div>
@@ -17,39 +17,27 @@
           <button type="button" class="btn btn-primary" onclick="onUIClickStereo(this)">Stereo</button>
         </div>
       </div>
-      <div class="row mt-2 justify-content-between">
-        <div class="col-5">
-          <div class="text-center">
-            <video id="video-main" width="1920" height="1080"></video>
-          </div>
+      <div class="row mt-1 justify-content-between">
+        <div class="col-6">
+          <video id="video-main" width="960" height="540"></video>
         </div>
-        <div class="col-5">
-          <div class="text-center">
-            <video id="video-sub" width="1920" height="1080"></video>
-          </div>
+        <div class="col-6">
+          <video id="video-sub" width="960" height="540"></video>
         </div>
       </div>
 
-      <div class="row mt-2 justify-content-between">
-        <div class="col-5">
-          <div class="text-center">
-            <canvas width="1920" height="1080" id="capture-main"></canvas>
-          </div>
+      <div class="row mt-1 justify-content-between">
+        <div class="col-6">
+          <canvas id="capture-main" width="960" height="540"></canvas>
         </div>
-        <div class="col-5">
-          <div class="text-center">
-            <canvas width="1920" height="1080" id="capture-sub"></canvas>
-          </div>
+        <div class="col-6">
+          <canvas id="capture-sub" width="960" height="540"></canvas>
         </div>
       </div>
 
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-    <!--
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    -->
-    <script async src="./opencv.js" type="text/javascript" onload="onOpenCvReady();"></script>
+    <script async src="./opencv/4.5.0/opencv.js" type="text/javascript" onload="onOpenCvReady();"></script>
     <script src="./main.js" type="text/javascript"></script>
   </body>
 </html>
