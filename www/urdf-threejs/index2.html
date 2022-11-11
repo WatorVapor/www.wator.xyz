@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=0.35, maximum-scale=0.35,minimum-scale=0.35">
+    <title>URDF ThreeJS</title>
+  </head>
+  <body>
+    <!--
+    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1.6.2/dist/es-module-shims.js" integrity="sha256-mnpB06k7bHgm3Yk5T3J6YNQyfXGgPrq26i6ltyDyUH4=" crossorigin="anonymous"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.module.js",
+          "ColladaLoader": "https://cdn.jsdelivr.net/npm/three@0.146.0/examples/jsm/loaders/ColladaLoader.js",
+          "OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.146.0/examples/jsm/controls/OrbitControls.js"
+        }
+      }
+    </script>
+    -->
+    <div>
+      <div id="canvas" style="--aspect-ratio: 16/9;width: 480px; height: 270px;float: left;"></div>
+      <div id="param" style="float: left;" class="dat-gui"></div>
+    </div>
+    
+    <script src="https://unpkg.com/three/build/three.min.js"></script>
+    <script src="https://unpkg.com/dat.gui/build/dat.gui.min.js"></script>
+    <script src="https://unpkg.com/three/examples/js/loaders/ColladaLoader.js"></script>
+    <script src="https://unpkg.com/three/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="./main2.js"></script>
+
+    <!--
+    <script type="module" src="./main.js"></script>
+    -->
+  </body>
+</html>
