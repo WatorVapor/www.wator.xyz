@@ -2,20 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.wator.xyz/</loc>
-    <lastmod>2020-01-01</lastmod>
+    <lastmod>2022-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.wator.xyz/maap/</loc>
-    <lastmod>2020-01-01</lastmod>
+    <lastmod>2022-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.wator.xyz/maap/account/</loc>
-    <lastmod>2020-01-01</lastmod>
+    <lastmod>2022-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.wator.xyz/about/</loc>
+    <lastmod>2022-01-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wator.xyz/maap/account/</loc>
+    <lastmod>2022-01-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wator.xyz/maap/anchor/</loc>
+    <lastmod>2022-01-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
