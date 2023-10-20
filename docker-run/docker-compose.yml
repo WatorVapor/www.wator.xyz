@@ -8,8 +8,7 @@ services:
       - /watorvapor/cert:/etc/cert
       - /watorvapor/log/nginx:/log
       - /dev/shm/:/dev/shm/
-    networks:
-      - outside
+    network_mode : "host"
     deploy:
       resources:
         limits:
@@ -25,8 +24,6 @@ services:
       - /dev/shm/:/dev/shm/
     working_dir: "/wss"
     command: node ./index.js
-    networks:
-      - outside
     deploy:
       resources:
         limits:
@@ -35,7 +32,3 @@ services:
         reservations:
           cpus: '0.1'
           memory: 32M
-networks:
-  outside:
-    external:
-      name: "host"
