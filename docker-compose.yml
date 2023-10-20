@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx:stable
     volumes:
-      - ../www:/www
+      - ./www:/www
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
       - /watorvapor/cert:/etc/cert
       - /watorvapor/log/nginx:/log
@@ -20,7 +20,7 @@ services:
   api:
     image: node:lts
     volumes:
-      - ../wss:/wss
+      - ./wss:/wss
       - /dev/shm/:/dev/shm/
     working_dir: "/wss"
     command: node ./index.js
