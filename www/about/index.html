@@ -38,7 +38,15 @@
     <script>
       $('[data-toggle="popover"]').popover({container: 'body' });
     </script>
-    <script type="text/javascript" src="/asset/js/ga.js" ></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSKYY24LCP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZSKYY24LCP');
+    </script>
     <script type="text/javascript" src="/asset/js/edauth/edauth.js"></script>
     <script type="text/javascript" src="/layout/navbar.js"></script>
     <script type="module" src="/asset/js/lang.js"></script>
