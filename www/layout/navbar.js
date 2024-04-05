@@ -15,7 +15,7 @@ const navbarTemplate =
     </ul>
     <ul class="navbar-nav nav justify-content-center">
       <li class="nav-item active ml-lg-4">
-        <a class="btn btn-lg btn-info nav-btn" href="/maap/" role="button">
+        <a class="btn btn-lg btn-info nav-btn" href="/otmc/" role="button">
           <i class="text-primary material-icons md-48">assistant_direction</i>
           <i class="text-primary material-icons md-48">near_me</i>
           <i class="text-primary material-icons md-48">map</i>
