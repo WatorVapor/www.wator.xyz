@@ -5,7 +5,9 @@ services:
       - ./www:/www
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
       - /dev/shm/:/dev/shm/
-    network_mode : "none"
+      - /watorvapor/ecdsa-cert/certbot/etc:/etc/cert
+      - /watorvapor/log/nginx:/log
+    network_mode : "host"
     deploy:
       resources:
         limits:
