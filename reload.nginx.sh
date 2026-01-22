@@ -1,0 +1,1 @@
+docker exec -it wwwwatorxyz-nginx-1 nginx -s reload
